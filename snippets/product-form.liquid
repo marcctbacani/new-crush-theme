@@ -1,0 +1,114 @@
+{% unless form_id %}
+  {% assign form_id = product.id %}
+{% endunless %}
+
+<div
+  class="
+    product-form
+    {% if section.settings.show_spb %}
+      smart-payment-buttons
+    {% endif %}
+  "
+  data-product-form="{{ form_id }}"
+>
+
+  <meta itemprop="name" content="{{ product.title }}">
+  <meta itemprop="brand" content="{{ product.vendor }}">
+  <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+  <meta itemprop="image" content="{{ product | img_url: 'grande' }}">
+
+  {% form 'product', product, id: 'product-form' %}
+    <div id="infiniteoptions-container"></div>
+    <div id="uploadery-container"></div>
+
+    <div class="product-options">
+      {% if product.variants.size > 1 %}
+        {% include 'product-options-dropdown' %}
+
+        <div class="selector-wrapper no-js-required">
+          <label for="product-select-{{ form_id }}"></label>
+          <select
+            class="product-select"
+            name="id"
+            id="product-select-{{ form_id }}">
+            {% for variant in product.variants %}
+              {% if variant.available %}
+                <option
+                  {% if variant == selected_variant %}selected="selected"{% endif %}
+                  value="{{ variant.id }}"
+                  data-variant-id="{{ variant.id }}">
+                  {{ variant.title }} - {{ variant.price | money }}
+                </option>
+              {% else %}
+                <option disabled="disabled"
+                  value="{{ variant.id }}"
+                  data-variant-id="{{ variant.id }}">
+                  {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                </option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+      {% else %}
+        <input
+          class="product-select"
+          name="id"
+          value="{{ product.variants[0].id }}"
+          type="hidden"
+          data-variant-title="{{ product.variants[0].title }}" />
+      {% endif %}
+    </div>
+
+    {% if section.settings.enable_product_quantity %}
+      <div class="product-quantity">
+        <div class="input-wrapper">
+          <label for="quantity">{{ 'general.general.quantity' | t }}</label>
+          <input type="text" name="quantity" id="quantity" value="1" />
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="product-submit" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+      <meta itemprop="price" content="{{ variant.price | divided_by: 100.00 }}" />
+      <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
+
+      <span class="product-price">
+        <span class="product-price-minimum money">
+          {{ variant.price | money }}
+        </span>
+
+        <span
+          class="
+            product-price-compare
+            money
+            original
+            {% if variant.compare_at_price <= variant.price %}
+              hidden
+            {% endif %}
+          "
+        >
+          {{ variant.compare_at_price | money }}
+        </span>
+      </span>
+
+      <span class="payment-buttons-container">
+        {% if variant.available %}
+          <input class="add-to-cart" type="submit" value="{{ 'products.product.add_to_cart' | t }}" />
+          <link itemprop="availability" href="http://schema.org/InStock">
+
+          {% if section.settings.show_spb %}
+            {{ form | payment_button }}
+          {% endif %}
+        {% else %}
+          <input type="button" class="add-to-cart disabled" disabled="disabled" value="{{ 'products.product.sold_out' | t }}" />
+          <link itemprop="availability" href="http://schema.org/OutOfStock">
+        {% endif %}
+      </span>
+    </div>
+
+    <div class="product-message"></div>
+
+    {% assign add_to_cart_text = 'products.product.add_to_cart' | t %}
+    {% include 'product-json', id: product.id, add_to_cart_text: add_to_cart_text, enable_history: true %}
+  {% endform %}
+</div>

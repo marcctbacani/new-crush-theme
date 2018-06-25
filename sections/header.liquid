@@ -1,0 +1,173 @@
+<div data-section-id="{{ section.id }}" data-section-type="header">
+
+  {%- assign logo = section.settings.image -%}
+  {%- assign logoMaxWidth = section.settings.logo-max-width | escape -%}
+  {%- assign mainMenu = section.settings.header-main-menu -%}
+
+  <div class="main-header-wrapper">
+    <header class="main-header clearfix" role="banner">
+
+      <form class="header-search-form" action="/search" method="get">
+        <input class="header-search-input" name="q" type="text" placeholder="{{ 'general.search.submit' | t }}" />
+      </form>
+
+      <div class="branding">
+        {% if logo != blank %}
+          <a class="logo" href="/">
+            {% capture logo_style %}
+              max-width: {{ logoMaxWidth }}px;
+            {% endcapture %}
+
+            {%
+              include 'rimg',
+              img: logo,
+              alt: shop.name,
+              size: '400x200',
+              style: logo_style
+            %}
+          </a>
+        {% else %}
+          {% if template contains 'index' %}
+            <h1 class="site-title">{{ shop.name }}</h1>
+          {% else %}
+            <div class="site-title"><a href="/">{{ shop.name }}</a></div>
+          {% endif %}
+        {% endif %}
+      </div>
+
+      <div class="header-tools">
+        <a class="cart-count {% if cart.item_count < 100 %}contain-count{% endif %}" href="/cart">
+          <span class="bag-count">{{ cart.item_count }}</span>
+          <span class="bag-text">{{ 'layout.header.cart_item_count' | t: count: cart.item_count }}</span>
+        </a>
+
+        {% include 'currency-switcher' with 'header' %}
+      </div>
+
+      <div class="mobile-header-tools">
+        <span class="mobile-header-search-toggle">&#57346;</span>
+        <a class="mobile-cart-count {% if cart.item_count < 100 %}contain-count{% endif %}" href="/cart">&#57348; <span class="bag-count">{{ cart.item_count }}</span></a>
+        <span class="mobile-navigation-toggle"><span></span></span>
+      </div>
+
+      <nav class="navigation">
+        <ul class="navigation-tier tier-1">
+          {% for link in linklists[mainMenu].links %}
+            {% assign showMegaNav = false %}
+
+            {% if section.blocks.size > 0 %}
+              {% assign megaNavImages = false %}
+
+              {% for block in section.blocks %}
+                {% assign megaNavHandle = block.settings.mega-nav-handle | handleize %}
+
+                {% if megaNavHandle == link.handle %}
+                  {% assign showMegaNav = true %}
+                  {% assign megaNavImages = block.settings.mega-nav-images %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+
+            {% if showMegaNav %}
+              <li
+                class="mega-nav has-{{link.links.size}}-items"
+                aria-haspopup="true"
+                aria-controls="mega-menu-item-{{ link.handle }}"
+                aria-expanded="false"
+              >
+                <a href="{{ link.url }}">{{ link.title }} <span class="mobile-tier-toggle"></span></a>
+                {% include 'mega-navigation' with megaNavImages %}
+              </li>
+            {% else %}
+              {% assign list = link.links %}
+              {% include 'has-dropdown' %}
+              <li
+                class="{% if has-dropdown %}has-dropdown{% endif %} regular-nav"
+                {% if has-dropdown %}
+                  aria-haspopup="true"
+                  aria-controls="menu-item-{{ link.handle }}"
+                  aria-expanded="false"
+                {% endif %}
+              >
+                <a href="{{ link.url }}">{{ link.title }} {% if has-dropdown %}<span class="mobile-tier-toggle"></span>{% endif %}</a>
+                {% if has-dropdown %}
+                  {% assign index = 2 %}
+                  {% include 'navigation-links' %}
+                {% endif %}
+              </li>
+            {% endif %}
+          {% endfor %}
+          {% if shop.customer_accounts_enabled %}
+            <li class="customer-links">
+              {% if customer %}
+                <a href="/account">{{ 'customers.account.title' | t }}</a>
+              {% else %}
+                {{ 'customers.account.title' | t | customer_login_link }}
+              {% endif %}
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+    </header>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Header",
+  "max_blocks": 4,
+  "class": "section-header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Logo image",
+      "info": "450 x 200px .jpg recommended"
+    },
+    {
+      "id": "logo-max-width",
+      "type": "range",
+      "label": "Logo max width",
+      "min": 100,
+      "max": 200,
+      "step": 1,
+      "unit": "px",
+      "default": 200
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "header-main-menu",
+      "label": "Main menu",
+      "default": "main-menu"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Mega menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "mega-nav-handle",
+          "label": "Menu item",
+          "info": "Enter menu item to apply a mega menu dropdown."
+        },
+        {
+          "type": "checkbox",
+          "id": "mega-nav-images",
+          "label": "Show images for products and collections"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}

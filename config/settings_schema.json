@@ -1,0 +1,429 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Pacific",
+    "theme_author": "Pixel Union",
+    "theme_version": "3.1.0",
+    "theme_documentation_url": "https:\/\/www.pixelunion.net\/support\/pacific-theme-manual\/",
+    "theme_support_email": "support@pixelunion.net"
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "General"
+      },
+      {
+        "type": "image_picker",
+        "id": "main-background-image",
+        "label": "Background image",
+        "info": "1920 x 1200px .jpg recommended"
+      },
+      {
+        "type": "color",
+        "id": "background-color",
+        "label": "Background"
+      },
+      {
+        "type": "color",
+        "id": "body-text-color",
+        "label": "Body text"
+      },
+      {
+        "type": "color",
+        "id": "accent-color",
+        "label": "Accent"
+      },
+      {
+        "type": "color",
+        "id": "heading-color",
+        "label": "Heading"
+      },
+      {
+        "type": "color",
+        "id": "meta-color",
+        "label": "Caption text"
+      },
+      {
+        "type": "color",
+        "id": "error-color",
+        "label": "Error"
+      },
+      {
+        "type": "color",
+        "id": "border-color",
+        "label": "Border"
+      },
+      {
+        "type": "header",
+        "content": "Buttons"
+      },
+      {
+        "type": "color",
+        "id": "primary-button-background",
+        "label": "Primary button background"
+      },
+      {
+        "type": "color",
+        "id": "primary-button-color",
+        "label": "Primary button text"
+      },
+      {
+        "type": "color",
+        "id": "secondary-button-background",
+        "label": "Secondary button background"
+      },
+      {
+        "type": "color",
+        "id": "secondary-button-color",
+        "label": "Secondary button text"
+      },
+      {
+        "type": "color",
+        "id": "disabled-button-background",
+        "label": "Disabled button background"
+      },
+      {
+        "type": "color",
+        "id": "disabled-button-color",
+        "label": "Disabled button text"
+      },
+      {
+        "type": "header",
+        "content": "Header"
+      },
+      {
+        "type": "color",
+        "id": "header-text-color",
+        "label": "Text"
+      },
+      {
+        "type": "color",
+        "id": "header-promo-background-color",
+        "label": "Top bar background"
+      },
+      {
+        "type": "color",
+        "id": "header-promo-text-color",
+        "label": "Top bar text"
+      },
+      {
+        "type": "color",
+        "id": "header-promo-link-color",
+        "label": "Top bar link"
+      },
+      {
+        "type": "header",
+        "content": "Footer"
+      },
+      {
+        "type": "color",
+        "id": "footer-text-color",
+        "label": "Text"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "label": "Body font",
+        "id": "font_body",
+        "default": "helvetica_n4"
+      },
+      {
+        "type": "header",
+        "content": "Store title"
+      },
+      {
+        "type": "font_picker",
+        "label": "Font",
+        "id": "font_logo",
+        "default": "helvetica_n7"
+      },
+      {
+        "type": "checkbox",
+        "id": "store-title-font-small-caps",
+        "label": "Capitalize"
+      },
+      {
+        "type": "header",
+        "content": "Headings"
+      },
+      {
+        "type": "font_picker",
+        "label": "Font",
+        "id": "font_heading",
+        "default": "helvetica_n7"
+      },
+      {
+        "type": "checkbox",
+        "id": "heading-font-small-caps",
+        "label": "Capitalize"
+      },
+      {
+        "type": "header",
+        "content": "Section headings"
+      },
+      {
+        "type": "font_picker",
+        "label": "Section heading font",
+        "id": "font_section",
+        "default": "helvetica_n4"
+      },
+      {
+        "type": "header",
+        "content": "Captions"
+      },
+      {
+        "type": "font_picker",
+        "label": "Font",
+        "id": "font_meta",
+        "default": "helvetica_n4"
+      },
+      {
+        "type": "header",
+        "content": "Buttons"
+      },
+      {
+        "type": "font_picker",
+        "label": "Font",
+        "id": "font_button",
+        "default": "helvetica_n7"
+      },
+      {
+        "type": "checkbox",
+        "id": "button-font-small-caps",
+        "label": "Capitalize"
+      }
+    ]
+  },
+  {
+    "name": "Sidebar",
+    "settings": [
+      {
+        "type": "select",
+        "id": "enable-sidebar",
+        "label": "Enable sidebar",
+        "info": "The \"all\" option denotes the Home page, Collections List page, and Collection pages.",
+        "options": [
+          {
+            "value": "all",
+            "label": "All pages"
+          },
+          {
+            "value": "not-home",
+            "label": "All except home page"
+          },
+          {
+            "value": "none",
+            "label": "Disabled"
+          }
+        ]
+      },
+      {
+        "type": "link_list",
+        "id": "sidebar-link-list-1",
+        "label": "Menu 1"
+      },
+      {
+        "type": "link_list",
+        "id": "sidebar-link-list-2",
+        "label": "Menu 2"
+      },
+      {
+        "type": "link_list",
+        "id": "sidebar-link-list-3",
+        "label": "Menu 3"
+      }
+    ]
+  },
+  {
+    "name": "Product grid",
+    "settings": [
+      {
+        "type": "select",
+        "id": "product_text_style",
+        "label": "Product text style",
+        "options": [
+          {
+            "value": "overlay",
+            "label": "Overlay"
+          },
+          {
+            "value": "under",
+            "label": "Under image"
+          }
+        ],
+        "default": "overlay"
+      },
+      {
+        "type": "checkbox",
+        "id": "product_image_flip",
+        "label": "Enable product image flip on hover"
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Accounts"
+      },
+      {
+        "type": "text",
+        "id": "social-facebook-url",
+        "label": "Facebook",
+        "info": "https:\/\/www.facebook.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social-twitter-url",
+        "label": "Twitter",
+        "info": "https:\/\/twitter.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social-google-url",
+        "label": "Google+",
+        "info": "https:\/\/plus.google.com\/+shopify"
+      },
+      {
+        "type": "text",
+        "id": "social-pinterest-url",
+        "label": "Pinterest",
+        "info": "https:\/\/www.pinterest.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social-instagram-url",
+        "label": "Instagram",
+        "info": "https:\/\/instagram.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social-kickstarter-url",
+        "label": "Kickstarter",
+        "info": "https:\/\/www.kickstarter.com\/projects\/user\/project"
+      },
+      {
+        "type": "text",
+        "id": "social-vimeo-url",
+        "label": "Vimeo",
+        "info": "https:\/\/vimeo.com\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social-youtube-url",
+        "label": "YouTube",
+        "info": "https:\/\/www.youtube.com\/user\/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social-email-address",
+        "label": "Email Address",
+        "info": "support@shopify.com"
+      },
+      {
+        "type": "text",
+        "id": "social-rss-url",
+        "label": "RSS",
+        "info": "http:\/\/storefront.myshopify.com\/blogs\/news.atom"
+      },
+      {
+        "type": "header",
+        "content": "Sharing"
+      },
+      {
+        "type": "checkbox",
+        "id": "product-show-share-buttons",
+        "label": "Enable product sharing"
+      },
+      {
+        "type": "checkbox",
+        "id": "blog-show-share-buttons",
+        "label": "Enable blog post sharing"
+      },
+      {
+        "type": "checkbox",
+        "id": "share-widget-facebook",
+        "label": "Share on Facebook"
+      },
+      {
+        "type": "checkbox",
+        "id": "share-widget-twitter",
+        "label": "Tweet on Twitter"
+      },
+      {
+        "type": "checkbox",
+        "id": "share-widget-pinterest",
+        "label": "Pin on Pinterest",
+        "info": "Product page only."
+      },
+      {
+        "type": "checkbox",
+        "id": "share-widget-fancy",
+        "label": "Add to Fancy",
+        "info": "Product page only."
+      },
+      {
+        "type": "checkbox",
+        "id": "share-widget-google-plus",
+        "label": "+1 on Google Plus"
+      },
+      {
+        "type": "checkbox",
+        "id": "share-widget-email",
+        "label": "Send by email"
+      }
+    ]
+  },
+  {
+    "name": "Currency",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_currency_switcher",
+        "label": "Enable currency conversion",
+        "default": true,
+        "info": "Even though prices are displayed in different currencies, orders will still be processed in your store's currency."
+      },
+      {
+        "type": "select",
+        "id": "currency-switcher-format",
+        "label": "Format",
+        "options": [
+          {
+            "value": "money_format",
+            "label": "Without currency ($10.00)"
+          },
+          {
+            "value": "money_with_currency_format",
+            "label": "With currency ($10.00 CAD)"
+          }
+        ],
+        "default": "money_with_currency_format"
+      },
+      {
+        "type": "text",
+        "id": "currency-switcher-supported-currencies",
+        "label": "Supported currencies",
+        "default": "CAD USD",
+        "info": "Use the country's ISO [currency code](http:\/\/www.xe.com\/iso4217.php). Separate your currency codes with a space."
+      }
+    ]
+  }
+]
