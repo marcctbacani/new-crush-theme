@@ -1,4 +1,4 @@
-{% assign product = all_products[section.settings.product] %}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% assign product = all_products[section.settings.product] %}
 {% assign add_to_cart_text = 'products.product.add_to_cart' | t %}
 {% assign enable_history = true %}
 
@@ -18,8 +18,8 @@
       "enableHistory": {{ enable_history | json }},
       "imageZoom": {{ section.settings.enable_zoom }},
       "linkedOptions": true,
-      "soldOutText": {{ 'products.product.sold_out' | t | json }},
-      "unavailableText": {{ 'products.product.unavailable' | t | json }}
+      "soldOutText": {% comment %}ly_i18n_replace_for_[ 'products.product.sold_out' | t | json ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.sold_out' | t | json }}{% endcapture %}{% include 'ly-static-string' with '9425091' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | json }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %},
+      "unavailableText": {% comment %}ly_i18n_replace_for_[ 'products.product.unavailable' | t | json ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.unavailable' | t | json }}{% endcapture %}{% include 'ly-static-string' with '9425092' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | json }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
     }
   }
 </script>
@@ -50,20 +50,20 @@
       <div class="product-details">
         <h1 class="page-title" itemprop="name">
           {% if product != blank %}
-            {{ product.title }}
+            {% comment %}ly_code_replace_for_[ product.title ]_begin{% endcomment %}{% include 'ly-title' with product %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}
           {% else %}
-            {{ 'onboarding.featured_products.product_title' | t }}
+            {% comment %}ly_i18n_replace_for_[ 'onboarding.featured_products.product_title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'onboarding.featured_products.product_title' | t }}{% endcapture %}{% include 'ly-static-string' with '9425093' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
           {% endif %}
         </h1>
 
         <a
           class="product-vendor vendor"
-          href="{{ product.vendor | url_for_vendor }}"
+          href="{% comment %}ly_code_replace_for_[ product.vendor | url_for_vendor ]_begin{% endcomment %}{% include 'ly-vendor' with product %}{{ ly_translation | url_for_vendor }}{% comment %}ly_code_replace_end{% endcomment %}"
         >
           {% if product != blank %}
-            {{ product.vendor }}
+            {% comment %}ly_code_replace_for_[ product.vendor ]_begin{% endcomment %}{% include 'ly-vendor' with product %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}
           {% else %}
-            {{ 'onboarding.featured_products.product_vendor' | t }}
+            {% comment %}ly_i18n_replace_for_[ 'onboarding.featured_products.product_vendor' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'onboarding.featured_products.product_vendor' | t }}{% endcapture %}{% include 'ly-static-string' with '9425094' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
           {% endif %}
         </a>
       </div>
@@ -113,7 +113,7 @@
                     href="{{ product.url | within: collection }}"
                     class="home-featured-product-link"
                   >
-                    {{ 'onboarding.featured_products.view_more_link' | t }}
+                    {% comment %}ly_i18n_replace_for_[ 'onboarding.featured_products.view_more_link' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'onboarding.featured_products.view_more_link' | t }}{% endcapture %}{% include 'ly-static-string' with '9425095' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
                   </a>
                 </div>
               {% endif %}

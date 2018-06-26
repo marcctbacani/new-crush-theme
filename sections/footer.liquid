@@ -1,4 +1,4 @@
-<div data-section-id="{{ section.id }}" data-section-type="footer">
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div data-section-id="{{ section.id }}" data-section-type="footer">
 
   {% assign modulesCount = 0 %}
   {% for block in section.blocks %}
@@ -32,13 +32,13 @@
           {{ "now" | date: "%Y" }}
         {% endcapture %}
 
-        {% capture shopName %}{{ shop.name | link_to: '/' }}{% endcapture %}
+        {% capture shopName %}{{ langify_shop_name | link_to: '/' }}{% endcapture %}
 
         {% include 'currency-switcher' with 'header' %}
 
         <p role="contentinfo">
-          {{ 'layout.footer.copyright_html' | t: year: year, shop_name: shopName }}<br>
-          {{ 'layout.footer.copyright_credit_html' | t }} {{ powered_by_link }}.
+          {% comment %}ly_i18n_replace_for_[ 'layout.footer.copyright_html' | t: year: year, shop_name: shopName ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.footer.copyright_html' | t: year: year, shop_name: shopName }}{% endcapture %}{% include 'ly-static-string' with '9425084' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = year %}{% assign ly_template = ly_template | replace: '[[year]]', replacement %}{% assign replacement = shopName  %}{% assign ly_template = ly_template | replace: '[[shop_name]]', replacement %}{% if escape_content %}{{ ly_template}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}<br>
+          {% comment %}ly_i18n_replace_for_[ 'layout.footer.copyright_credit_html' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.footer.copyright_credit_html' | t }}{% endcapture %}{% include 'ly-static-string' with '9425085' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %} {{ powered_by_link }}.
         </p>
 
         {% include 'payment-icons' %}
@@ -53,7 +53,7 @@
 
       <div class="modal-message rte"></div>
 
-      <span class="modal-close modal-close-secondary">{{ 'general.general.close' | t }}</span>
+      <span class="modal-close modal-close-secondary">{% comment %}ly_i18n_replace_for_[ 'general.general.close' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.general.close' | t }}{% endcapture %}{% include 'ly-static-string' with '9425086' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
     </div>
   </div>
 

@@ -1,4 +1,4 @@
-<div data-section-id="{{ section.id }}" data-section-type="page-collection">
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div data-section-id="{{ section.id }}" data-section-type="page-collection">
 
   {% assign productTextStyle = settings.product_text_style %}
   {% assign productImageFlip = settings.product_image_flip %}
@@ -25,7 +25,7 @@
 
     {% if platforms > 0 %}
       <div class="collection-sharing meta">
-        <span class="collection-sharing-toggle">{{ 'general.share_buttons.share' | t }}</span>
+        <span class="collection-sharing-toggle">{% comment %}ly_i18n_replace_for_[ 'general.share_buttons.share' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.share_buttons.share' | t }}{% endcapture %}{% include 'ly-static-string' with '9425115' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
 
         {% include 'share-buttons' %}
       </div>
@@ -39,7 +39,7 @@
             <div class="select-wrapper">
 
               {% assign sortHandles = "manual|price-ascending|price-descending|title-ascending|title-descending|created-ascending|created-descending|best-selling" | split: "|" %}
-              {% capture sortTitles %}{{ 'collections.collection_sorting.manual' | t }}|{{ 'collections.collection_sorting.price-ascending' | t }}|{{ 'collections.collection_sorting.price-descending' | t }}|{{ 'collections.collection_sorting.title-ascending' | t }}|{{ 'collections.collection_sorting.title-descending' | t }}|{{ 'collections.collection_sorting.created-ascending' | t }}|{{ 'collections.collection_sorting.created-descending' | t }}|{{ 'collections.collection_sorting.best-selling' | t }}{% endcapture %}
+              {% capture sortTitles %}{% comment %}ly_i18n_replace_for_[ 'collections.collection_sorting.manual' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.collection_sorting.manual' | t }}{% endcapture %}{% include 'ly-static-string' with '9425116' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}|{% comment %}ly_i18n_replace_for_[ 'collections.collection_sorting.price-ascending' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.collection_sorting.price-ascending' | t }}{% endcapture %}{% include 'ly-static-string' with '9425117' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}|{% comment %}ly_i18n_replace_for_[ 'collections.collection_sorting.price-descending' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.collection_sorting.price-descending' | t }}{% endcapture %}{% include 'ly-static-string' with '9425118' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}|{% comment %}ly_i18n_replace_for_[ 'collections.collection_sorting.title-ascending' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.collection_sorting.title-ascending' | t }}{% endcapture %}{% include 'ly-static-string' with '9425119' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}|{% comment %}ly_i18n_replace_for_[ 'collections.collection_sorting.title-descending' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.collection_sorting.title-descending' | t }}{% endcapture %}{% include 'ly-static-string' with '9425120' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}|{% comment %}ly_i18n_replace_for_[ 'collections.collection_sorting.created-ascending' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.collection_sorting.created-ascending' | t }}{% endcapture %}{% include 'ly-static-string' with '9425121' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}|{% comment %}ly_i18n_replace_for_[ 'collections.collection_sorting.created-descending' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.collection_sorting.created-descending' | t }}{% endcapture %}{% include 'ly-static-string' with '9425122' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}|{% comment %}ly_i18n_replace_for_[ 'collections.collection_sorting.best-selling' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.collection_sorting.best-selling' | t }}{% endcapture %}{% include 'ly-static-string' with '9425123' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}{% endcapture %}
               {% assign sortTitles = sortTitles | split: "|" %}
 
               {% for handle in sortHandles %}
@@ -50,7 +50,7 @@
                 {% endif %}
               {% endfor %}
 
-              <label class="selected-text">{{ 'collections.collection_sorting.title' | t }} <strong>{{ currentTitle }}</strong></label>
+              <label class="selected-text">{% comment %}ly_i18n_replace_for_[ 'collections.collection_sorting.title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.collection_sorting.title' | t }}{% endcapture %}{% include 'ly-static-string' with '9425124' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %} <strong>{{ currentTitle }}</strong></label>
               <select>
                 {% for handle in sortHandles %}
                   {% if collection.sort_by == blank and collection.default_sort_by == handle %}
@@ -83,9 +83,9 @@
 
                 <div class="collection-filter">
                   <div class="select-wrapper">
-                    <label class="selected-text">{{ linklists[name].title }}: <strong>{{ 'collections.collection.any_tag' | t }}</strong></label>
+                    <label class="selected-text">{% comment %}ly_code_replace_for_[ linklists[name].title ]_begin{% endcomment %}{% include 'ly-title' with linklists[name] %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}: <strong>{% comment %}ly_i18n_replace_for_[ 'collections.collection.any_tag' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.collection.any_tag' | t }}{% endcapture %}{% include 'ly-static-string' with '9425125' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</strong></label>
                     <select>
-                      <option value="any">{{ 'collections.collection.any_tag' | t }}</option>
+                      <option value="any">{% comment %}ly_i18n_replace_for_[ 'collections.collection.any_tag' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.collection.any_tag' | t }}{% endcapture %}{% include 'ly-static-string' with '9425125' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</option>
 
                       {% assign currentTagsHandles = '' %}
 
@@ -106,9 +106,9 @@
 						            {% assign tagTitle = link.title | downcase %}
                         {% if collection.all_tags contains link.title or collection.all_tags contains tagTitle %}
                           {% if currentTagsHandles contains tagHandle %}
-                            <option value="{{ tagHandle }}" selected>{{ link.title }}</option>
+                            <option value="{{ tagHandle }}" selected>{% comment %}ly_code_replace_for_[ link.title ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</option>
                           {% else %}
-                            <option value="{{ tagHandle }}">{{ link.title }}</option>
+                            <option value="{{ tagHandle }}">{% comment %}ly_code_replace_for_[ link.title ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</option>
                           {% endif %}
                         {% endif %}
                       {% endfor %}
@@ -125,9 +125,9 @@
 
               <div class="collection-filter">
                 <div class="select-wrapper">
-                  <label class="selected-text">{{ 'collections.collection.tags_label' | t }}: <strong>{{ 'collections.collection.any_tag' | t }}</strong></label>
+                  <label class="selected-text">{% comment %}ly_i18n_replace_for_[ 'collections.collection.tags_label' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.collection.tags_label' | t }}{% endcapture %}{% include 'ly-static-string' with '9425126' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}: <strong>{% comment %}ly_i18n_replace_for_[ 'collections.collection.any_tag' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.collection.any_tag' | t }}{% endcapture %}{% include 'ly-static-string' with '9425125' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</strong></label>
                   <select>
-                    <option value="any">{{ 'collections.collection.any_tag' | t }}</option>
+                    <option value="any">{% comment %}ly_i18n_replace_for_[ 'collections.collection.any_tag' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.collection.any_tag' | t }}{% endcapture %}{% include 'ly-static-string' with '9425125' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</option>
                     {% for tag in collection.tags %}
                       {% if current_tags contains tag %}
                         <option value="{{ tag | handleize }}" selected>{{ tag }}</option>
@@ -143,7 +143,7 @@
           </div>
 
           {% if current_tags.size > 0 %}
-            <span class="meta collection-remove-filter">{{ 'collections.collection.reset_tags' | t }}</span>
+            <span class="meta collection-remove-filter">{% comment %}ly_i18n_replace_for_[ 'collections.collection.reset_tags' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.collection.reset_tags' | t }}{% endcapture %}{% include 'ly-static-string' with '9425127' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
           {% endif %}
         {% endif %}
 
@@ -160,7 +160,7 @@
       {% for product in collection.products %}
         {% include 'product-list-item' %}
       {% else %}
-        <p class="empty">{{ 'collections.collection.empty' | t }} {% if current_tags.size > 0 %}{{ 'collections.collection.empty_tag_filter' | t }}{% endif %}</p>
+        <p class="empty">{% comment %}ly_i18n_replace_for_[ 'collections.collection.empty' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.collection.empty' | t }}{% endcapture %}{% include 'ly-static-string' with '9425128' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %} {% if current_tags.size > 0 %}{% comment %}ly_i18n_replace_for_[ 'collections.collection.empty_tag_filter' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.collection.empty_tag_filter' | t }}{% endcapture %}{% include 'ly-static-string' with '9425129' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}{% endif %}</p>
       {% endfor %}
     </div>
 

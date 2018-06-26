@@ -1,12 +1,12 @@
-<p class="account-logged-in-as">
-  {{ 'customers.general.logged_in_as' | t: customer_name: customer.name }} (<em>{{ 'customers.general.logout' | t | customer_logout_link }}</em>)
-  &bull; <a href="/account/addresses">{{ 'customers.addresses.title' | t }} ({{ customer.addresses_count }})</a>
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<p class="account-logged-in-as">
+  {% comment %}ly_i18n_replace_for_[ 'customers.general.logged_in_as' | t: customer_name: customer.name ]_begin{% endcomment %}{% capture ly_template %}{{ 'customers.general.logged_in_as' | t: customer_name: customer.name }}{% endcapture %}{% include 'ly-static-string' with '9425266' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = customer.name  %}{% assign ly_template = ly_template | replace: '[[customer_name]]', replacement %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %} (<em>{% comment %}ly_i18n_replace_for_[ 'customers.general.logout' | t | customer_logout_link ]_begin{% endcomment %}{% capture ly_template %}{{ 'customers.general.logout' | t | customer_logout_link }}{% endcapture %}{% include 'ly-static-string' with '9425267' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | customer_logout_link }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</em>)
+  &bull; <a href="/account/addresses">{% comment %}ly_i18n_replace_for_[ 'customers.addresses.title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customers.addresses.title' | t }}{% endcapture %}{% include 'ly-static-string' with '9425268' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %} ({{ customer.addresses_count }})</a>
 </p>
 
 {% if customer.addresses.size > 0 %}
   <div class="default-address">
 
-    <h3>{{ 'customers.account.default_address' | t }}</h3>
+    <h3>{% comment %}ly_i18n_replace_for_[ 'customers.account.default_address' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customers.account.default_address' | t }}{% endcapture %}{% include 'ly-static-string' with '9425269' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h3>
 
     <p>
       <span>{{ customer.default_address.first_name }} {{ customer.default_address.last_name }}</span><br>
@@ -27,22 +27,22 @@
       {% endif %}
     </p>
 
-    <p class="meta"><a href="/account/addresses">{{ 'customers.addresses.edit' | t }}</a></p>
+    <p class="meta"><a href="/account/addresses">{% comment %}ly_i18n_replace_for_[ 'customers.addresses.edit' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customers.addresses.edit' | t }}{% endcapture %}{% include 'ly-static-string' with '9425270' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a></p>
 
   </div>
 {% endif %}
 
 <div class="order-history">
 
-  <h3>{{ 'customers.account.order_history' | t }}</h3>
+  <h3>{% comment %}ly_i18n_replace_for_[ 'customers.account.order_history' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customers.account.order_history' | t }}{% endcapture %}{% include 'ly-static-string' with '9425271' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h3>
 
   <table class="order-history-orders">
     <thead>
       <tr>
-        <th class="first">{{ 'customers.account.order' | t }}</th>
-        <th>{{ 'customers.account.payment' | t }}</th>
-        <th>{{ 'customers.account.fulfillment' | t }}</th>
-        <th class="last">{{ 'general.general.total' | t }}</th>
+        <th class="first">{% comment %}ly_i18n_replace_for_[ 'customers.account.order' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customers.account.order' | t }}{% endcapture %}{% include 'ly-static-string' with '9425272' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</th>
+        <th>{% comment %}ly_i18n_replace_for_[ 'customers.account.payment' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customers.account.payment' | t }}{% endcapture %}{% include 'ly-static-string' with '9425273' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</th>
+        <th>{% comment %}ly_i18n_replace_for_[ 'customers.account.fulfillment' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customers.account.fulfillment' | t }}{% endcapture %}{% include 'ly-static-string' with '9425274' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</th>
+        <th class="last">{% comment %}ly_i18n_replace_for_[ 'general.general.total' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.general.total' | t }}{% endcapture %}{% include 'ly-static-string' with '9425275' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</th>
       </tr>
     </thead>
 
@@ -58,7 +58,7 @@
         {% endfor %}
       {% else %}
         <tr>
-          <td colspan="4" class="no-orders">{{ 'customers.account.no_orders' | t }}</td>
+          <td colspan="4" class="no-orders">{% comment %}ly_i18n_replace_for_[ 'customers.account.no_orders' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customers.account.no_orders' | t }}{% endcapture %}{% include 'ly-static-string' with '9425276' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</td>
         </tr>
       {% endif %}
     </tbody>

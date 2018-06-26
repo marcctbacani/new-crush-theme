@@ -1,71 +1,71 @@
-<div class="breadcrumbs">
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div class="breadcrumbs">
 
-  <a href="/">{{ 'general.breadcrumbs.home' | t }}</a> <span class="divider">/</span>
+  <a href="/">{% comment %}ly_i18n_replace_for_[ 'general.breadcrumbs.home' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.breadcrumbs.home' | t }}{% endcapture %}{% include 'ly-static-string' with '9425147' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a> <span class="divider">/</span>
 
   {% if template contains "product" %}
     {% if product.collections %}
-      <a href="/collections">{{ 'collections.listing.title' | t }}</a>
+      <a href="/collections">{% comment %}ly_i18n_replace_for_[ 'collections.listing.title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.listing.title' | t }}{% endcapture %}{% include 'ly-static-string' with '9425148' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
       {% if collection and collection.url %}
         <span class="divider">/</span>
-        <a href="{{ collection.url }}">{{ collection.title }}</a>
+        <a href="{{ collection.url }}">{% comment %}ly_code_replace_for_[ collection.title ]_begin{% endcomment %}{% include 'ly-title' with collection %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a>
       {% elsif product.collections.size > 0 %}
         <span class="divider">/</span>
-        <a href="{{ product.collections.first.url }}">{{ product.collections.first.title }}</a>
+        <a href="{{ product.collections.first.url }}">{% comment %}ly_code_replace_for_[ product.collections.first.title ]_begin{% endcomment %}{% include 'ly-title' with product.collections.first %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a>
       {% endif %}
     {% else %}
-      <a href="/collections/all">{{ 'collections.collection.all_products' | t }}</a>
+      <a href="/collections/all">{% comment %}ly_i18n_replace_for_[ 'collections.collection.all_products' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.collection.all_products' | t }}{% endcapture %}{% include 'ly-static-string' with '9425149' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
     {% endif %}
-      <span class="divider">/</span> <span>{{ product.title }}</span>
+      <span class="divider">/</span> <span>{% comment %}ly_code_replace_for_[ product.title ]_begin{% endcomment %}{% include 'ly-title' with product %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</span>
   {% elsif template contains "list-collections" %}
     <span>
-      {{ 'collections.listing.title' | t }}
+      {% comment %}ly_i18n_replace_for_[ 'collections.listing.title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.listing.title' | t }}{% endcapture %}{% include 'ly-static-string' with '9425148' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
     </span>
   {% elsif template contains "collection" %}
     {% if collection.handle == 'all' %}
-      <span>{{ 'collections.collection.all_products' | t }}</span>
+      <span>{% comment %}ly_i18n_replace_for_[ 'collections.collection.all_products' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.collection.all_products' | t }}{% endcapture %}{% include 'ly-static-string' with '9425149' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
     {% else %}
-      <a href="/collections">{{ 'collections.listing.title' | t }}</a> <span class="divider">/</span> <span>{{ collection.title }}</span>
+      <a href="/collections">{% comment %}ly_i18n_replace_for_[ 'collections.listing.title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'collections.listing.title' | t }}{% endcapture %}{% include 'ly-static-string' with '9425148' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a> <span class="divider">/</span> <span>{% comment %}ly_code_replace_for_[ collection.title ]_begin{% endcomment %}{% include 'ly-title' with collection %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</span>
     {% endif %}
   {% elsif template contains "blog" %}
     {% if current_tags.size > 0 %}
       {% capture allTags %}{% for tag in current_tags %}{{ tag }}{% unless forloop.last %}, {% endunless %}{% endfor %}{% endcapture %}
-      <a href="{{ blog.url }}">{{ blog.title }}</a> <span class="divider">/</span> <span>{{ 'blogs.blog.tag_page_title' | t: tag: allTags }}</span>
+      <a href="{{ blog.url }}">{% comment %}ly_code_replace_for_[ blog.title ]_begin{% endcomment %}{% include 'ly-title' with blog %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a> <span class="divider">/</span> <span>{% comment %}ly_i18n_replace_for_[ 'blogs.blog.tag_page_title' | t: tag: allTags ]_begin{% endcomment %}{% capture ly_template %}{{ 'blogs.blog.tag_page_title' | t: tag: allTags }}{% endcapture %}{% include 'ly-static-string' with '9425151' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = allTags  %}{% assign ly_template = ly_template | replace: '[[tag]]', replacement %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
     {% else %}
-      <span>{{ blog.title }}</span>
+      <span>{% comment %}ly_code_replace_for_[ blog.title ]_begin{% endcomment %}{% include 'ly-title' with blog %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</span>
     {% endif %}
   {% elsif template contains "page" %}
-    <span>{{ page.title }}</span>
+    <span>{% comment %}ly_code_replace_for_[ page.title ]_begin{% endcomment %}{% include 'ly-title' with page %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</span>
   {% elsif template contains "article" %}
-    {{ blog.title | link_to: blog.url }} <span class="divider">/</span> <span>{{ article.title }}</span>
+    {% comment %}ly_code_replace_for_[ blog.title | link_to: blog.url ]_begin{% endcomment %}{% include 'ly-title' with blog %}{{ ly_translation | link_to: blog.url }}{% comment %}ly_code_replace_end{% endcomment %} <span class="divider">/</span> <span>{% comment %}ly_code_replace_for_[ article.title ]_begin{% endcomment %}{% include 'ly-title' with article %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</span>
   {% elsif template contains "cart" %}
-    <span>{{ 'cart.title' | t }}</span>
+    <span>{% comment %}ly_i18n_replace_for_[ 'cart.title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'cart.title' | t }}{% endcapture %}{% include 'ly-static-string' with '9425152' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
   {% elsif template contains "404" %}
-    <span>{{ 'general.404.title' | t }}</span>
+    <span>{% comment %}ly_i18n_replace_for_[ 'general.404.title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.404.title' | t }}{% endcapture %}{% include 'ly-static-string' with '9425153' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
   {% elsif template contains "search" %}
     {% if search.performed %}
-      <span>{{ 'general.search.title_after_search' | t }}</span>
+      <span>{% comment %}ly_i18n_replace_for_[ 'general.search.title_after_search' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.search.title_after_search' | t }}{% endcapture %}{% include 'ly-static-string' with '9425154' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
     {% else %}
-      <span>{{ 'general.search.title' | t }}</span>
+      <span>{% comment %}ly_i18n_replace_for_[ 'general.search.title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.search.title' | t }}{% endcapture %}{% include 'ly-static-string' with '9425155' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
     {% endif %}
   {% elsif template contains "customers" %}
-    <a href="/account">{{ 'customers.account.title' | t }}</a>
+    <a href="/account">{% comment %}ly_i18n_replace_for_[ 'customers.account.title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customers.account.title' | t }}{% endcapture %}{% include 'ly-static-string' with '9425156' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
 
     {% unless template contains "account" %}
       <span class="divider">/</span>
 
       <span>
         {% if template contains 'activate' %}
-          {{ 'customers.activate_account.title' | t }}
+          {% comment %}ly_i18n_replace_for_[ 'customers.activate_account.title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customers.activate_account.title' | t }}{% endcapture %}{% include 'ly-static-string' with '9425157' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
         {% elsif template contains 'addresses' %}
-          {{ 'customers.addresses.title' | t }}
+          {% comment %}ly_i18n_replace_for_[ 'customers.addresses.title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customers.addresses.title' | t }}{% endcapture %}{% include 'ly-static-string' with '9425158' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
         {% elsif template contains 'login' %}
-          {{ 'customers.login.title' | t }}
+          {% comment %}ly_i18n_replace_for_[ 'customers.login.title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customers.login.title' | t }}{% endcapture %}{% include 'ly-static-string' with '9425159' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
         {% elsif template contains 'order' %}
-          {{ 'customers.order.title' | t: order_number: order.name }}
+          {% comment %}ly_i18n_replace_for_[ 'customers.order.title' | t: order_number: order.name ]_begin{% endcomment %}{% capture ly_template %}{{ 'customers.order.title' | t: order_number: order.name }}{% endcapture %}{% include 'ly-static-string' with '9425161' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = order.name  %}{% assign ly_template = ly_template | replace: '[[order_number]]', replacement %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
         {% elsif template contains 'register' %}
-          {{ 'customers.register.title' | t }}
+          {% comment %}ly_i18n_replace_for_[ 'customers.register.title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customers.register.title' | t }}{% endcapture %}{% include 'ly-static-string' with '9425162' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
         {% elsif template contains 'reset' %}
-          {{ 'customers.reset_password.title' | t }}
+          {% comment %}ly_i18n_replace_for_[ 'customers.reset_password.title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customers.reset_password.title' | t }}{% endcapture %}{% include 'ly-static-string' with '9425163' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
         {% endif %}
       </span>
     {% endunless %}

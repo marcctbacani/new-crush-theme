@@ -1,4 +1,4 @@
-{% assign default_country = '' %}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% assign default_country = '' %}
 {% assign default_province = '' %}
 {% assign default_zip = '' %}
 
@@ -24,11 +24,11 @@
 
 <div class="cart-shipping-calculator">
 
-  <h4>{{ 'cart.shipping_calculator.header' | t }}</h4>
+  <h4>{% comment %}ly_i18n_replace_for_[ 'cart.shipping_calculator.header' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'cart.shipping_calculator.header' | t }}{% endcapture %}{% include 'ly-static-string' with '9425231' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h4>
 
   <div class="cart-shipping-calculator-wrap rte">
     <div class="input-wrapper">
-      <label for="address_country">{{ 'cart.shipping_calculator.country' | t }}</label>
+      <label for="address_country">{% comment %}ly_i18n_replace_for_[ 'cart.shipping_calculator.country' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'cart.shipping_calculator.country' | t }}{% endcapture %}{% include 'ly-static-string' with '9425232' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
       <div class="country-select select-wrapper">
         <div class="selected-text"></div>
         <select
@@ -42,7 +42,7 @@
     </div>
 
     <div class="input-wrapper" id="address_province_container">
-      <label for="address_province" id="address_province_label">{{ 'cart.shipping_calculator.province' | t }}</label>
+      <label for="address_province" id="address_province_label">{% comment %}ly_i18n_replace_for_[ 'cart.shipping_calculator.province' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'cart.shipping_calculator.province' | t }}{% endcapture %}{% include 'ly-static-string' with '9425233' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
       <div class="province-select select-wrapper">
         <div class="selected-text"></div>
         <select
@@ -55,7 +55,7 @@
     </div>
 
     <div class="zip-code input-wrapper">
-      <label for="address_zip">{{ 'cart.shipping_calculator.zip' | t }}</label>
+      <label for="address_zip">{% comment %}ly_i18n_replace_for_[ 'cart.shipping_calculator.zip' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'cart.shipping_calculator.zip' | t }}{% endcapture %}{% include 'ly-static-string' with '9425234' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
       <input
         id="address_zip"
         type="text"
@@ -69,12 +69,12 @@
       <input
         type="button"
         class="get-rates secondary"
-        value="{{ 'cart.shipping_calculator.submit' | t }}" />
+        value="{% comment %}ly_i18n_replace_for_[ 'cart.shipping_calculator.submit' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'cart.shipping_calculator.submit' | t }}{% endcapture %}{% include 'ly-static-string' with '9425235' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}" />
     </div>
   </div>
 
   <div class="cart-shipping-calculator-response rte">
-    <p>{{ 'cart.shipping_calculator.prompt' | t }}</p>
+    <p>{% comment %}ly_i18n_replace_for_[ 'cart.shipping_calculator.prompt' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'cart.shipping_calculator.prompt' | t }}{% endcapture %}{% include 'ly-static-string' with '9425236' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</p>
   </div>
 
 </div>
@@ -82,8 +82,8 @@
 <script type="application/json" data-shipping-calculator-strings>
   {
     "customerIsLoggedIn": {{ customer.default_address.country | default: false | json }},
-    "submitButton": {{ 'cart.shipping_calculator.submit' | t | json }},
-    "submitButtonDisabled": {{ 'cart.shipping_calculator.disabled' | t | json}},
+    "submitButton": {% comment %}ly_i18n_replace_for_[ 'cart.shipping_calculator.submit' | t | json ]_begin{% endcomment %}{% capture ly_template %}{{ 'cart.shipping_calculator.submit' | t | json }}{% endcapture %}{% include 'ly-static-string' with '9425237' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | json }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %},
+    "submitButtonDisabled": {% comment %}ly_i18n_replace_for_[ 'cart.shipping_calculator.disabled' | t | json]_begin{% endcomment %}{% capture ly_template %}{{ 'cart.shipping_calculator.disabled' | t | json}}{% endcapture %}{% include 'ly-static-string' with '9425238' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | json}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %},
     "moneyFormat": {{ shop.money_with_currency_format | json }}
   }
 </script>

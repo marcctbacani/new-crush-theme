@@ -1,4 +1,4 @@
-<div data-section-id="{{ section.id }}" data-section-type="collection-list">
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div data-section-id="{{ section.id }}" data-section-type="collection-list">
 
   {% assign sectionTitle = section.settings.title | escape %}
   {% assign sectionBorder = section.settings.border %}
@@ -69,7 +69,7 @@
                   {% if collectionTitle != blank %}
                     {{ collectionTitle }}
                   {% else %}
-                    {{ 'onboarding.featured_collections.collection_title' | t }}
+                    {% comment %}ly_i18n_replace_for_[ 'onboarding.featured_collections.collection_title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'onboarding.featured_collections.collection_title' | t }}{% endcapture %}{% include 'ly-static-string' with '9425090' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
                   {% endif %}
                 </h3>
               </div>
@@ -86,7 +86,7 @@
               </div>
 
               <div class="home-collection-list-item-content">
-                <h3>{{ 'onboarding.featured_collections.collection_title' | t }}</h3>
+                <h3>{% comment %}ly_i18n_replace_for_[ 'onboarding.featured_collections.collection_title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'onboarding.featured_collections.collection_title' | t }}{% endcapture %}{% include 'ly-static-string' with '9425090' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h3>
               </div>
             </div>
           {% endfor %}

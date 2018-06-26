@@ -1,10 +1,10 @@
-{% if list.size > 0 %}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% if list.size > 0 %}
   <ul class="mega-nav-tier-{{ index }}">
     {% for sublink in list %}
       {% assign list = sublink.links %}
       {% include 'has-dropdown' %}
       <li class="{% if has-dropdown %}has-children{% endif %}">
-        <a href="{{ sublink.url }}">{{ sublink.title }} {% if has-dropdown %}<span class="mobile-tier-toggle"></span>{% endif %}</a>
+        <a href="{{ sublink.url }}">{% comment %}ly_code_replace_for_[ sublink.title ]_begin{% endcomment %}{% include 'ly-title' with sublink %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %} {% if has-dropdown %}<span class="mobile-tier-toggle"></span>{% endif %}</a>
         {% if has-dropdown %}
           {% assign index = index | plus: 1 %}
           {% include 'mega-navigation-links' with list and index %}

@@ -1,4 +1,4 @@
-<div class="footer-module footer-instagram footer-instagram-{{ block.settings.instagram-count }}-images"
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div class="footer-module footer-instagram footer-instagram-{{ block.settings.instagram-count }}-images"
   data-instagram-access-token="{{ block.settings.instagram-access-token }}"
   data-instagram-count="{{ block.settings.instagram-count }}">
 
@@ -16,7 +16,7 @@
         </a>
       {% endfor %}
 
-      <p style="font-size: 14px; padding: 0 7px; color: #777;">{{ 'onboarding.instagram_widget.message' | t }}</p>
+      <p style="font-size: 14px; padding: 0 7px; color: #777;">{% comment %}ly_i18n_replace_for_[ 'onboarding.instagram_widget.message' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'onboarding.instagram_widget.message' | t }}{% endcapture %}{% include 'ly-static-string' with '9425176' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</p>
     {% endif %}
   </div>
 </div>

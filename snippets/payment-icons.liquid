@@ -1,4 +1,4 @@
-
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}
 {% if shop.enabled_payment_types.size > 0 and section.settings.show-payment-options %}
   <ul class="payment-options">
     {% for type in shop.enabled_payment_types %}

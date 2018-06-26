@@ -1,4 +1,4 @@
-{% assign item = product %}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% assign item = product %}
 {% if template contains 'search' %}
   {% assign item = item %}
 {% elsif template contains 'product' %}
@@ -51,9 +51,9 @@
 
   {%- capture item_class -%}
     {%- if secondaryImage -%}
-      primary-image
+      <ly-as-9425213>primary-image</ly-as-9425213>
     {%- else -%}
-      only-image
+      <ly-as-9425214>only-image</ly-as-9425214>
     {%- endif -%}
   {%- endcapture -%}
 
@@ -84,7 +84,7 @@
         <span class="product-list-item-badge meta sale">{{ saleText }}</span>
       {% endif %}
     {% else %}
-      <span class="product-list-item-badge inventory">{{ 'products.product.sold_out' | t }}</span>
+      <span class="product-list-item-badge inventory">{% comment %}ly_i18n_replace_for_[ 'products.product.sold_out' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.sold_out' | t }}{% endcapture %}{% include 'ly-static-string' with '9425215' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
     {% endif %}
   </figure>
 
@@ -95,12 +95,12 @@
   <div class="product-list-item-details">
 
     <p class="product-list-item-vendor vendor meta">{{ item.vendor | link_to_vendor }}</p>
-    <h3 class="product-list-item-title"><a href="{{ item.url | within: collection }}">{{ item.title }}</a></h3>
+    <h3 class="product-list-item-title"><a href="{{ item.url | within: collection }}">{% comment %}ly_code_replace_for_[ item.title ]_begin{% endcomment %}{% include 'ly-title' with item %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a></h3>
     <p class="product-list-item-price">
       {% if item.available %}
         {% if item.price_varies %}
           <span class="price">
-            {{ 'products.product.from' | t }} <span class="money">{{ item.price_min | money }}</span>
+            {% comment %}ly_i18n_replace_for_[ 'products.product.from' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.from' | t }}{% endcapture %}{% include 'ly-static-string' with '9425216' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %} <span class="money">{{ item.price_min | money }}</span>
           </span>
         {% else %}
           {% if onSale %}
@@ -113,7 +113,7 @@
           {% endif %}
         {% endif %}
       {% else %}
-        {{ 'products.product.sold_out' | t }}
+        {% comment %}ly_i18n_replace_for_[ 'products.product.sold_out' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.sold_out' | t }}{% endcapture %}{% include 'ly-static-string' with '9425215' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
       {% endif %}
     </p>
   </div>

@@ -1,4 +1,4 @@
-<article class="collection-item">
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<article class="collection-item">
 
   {% if collection-list-item == 'linklist' %}
     {% assign collection = collections[link.handle] %}
@@ -29,11 +29,11 @@
   </figure>
 
   <div class="collection-item-details {{collectionTextStyle}}-style">
-    <h3><a href="{{ collection.url }}">{{ collection.title }}</a></h3>
+    <h3><a href="{{ collection.url }}">{% comment %}ly_code_replace_for_[ collection.title ]_begin{% endcomment %}{% include 'ly-title' with collection %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a></h3>
 
     {% if collection.description != blank and showDescriptions %}
       <div class="rte">
-        {{ collection.description | strip_html | truncatewords: 20 }}
+        {% comment %}ly_code_replace_for_[ collection.description | strip_html | truncatewords: 20 ]_begin{% endcomment %}{% include 'ly-description' with collection %}{{ ly_translation | strip_html | truncatewords: 20 }}{% comment %}ly_code_replace_end{% endcomment %}
       </div>
     {% endif %}
   </div>

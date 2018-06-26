@@ -1,4 +1,4 @@
-<div class="sidebar">
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div class="sidebar">
 
   {% assign sidebarLinkLists = "sidebar-link-list-1|sidebar-link-list-2|sidebar-link-list-3" | split: "|" %}
 
@@ -8,28 +8,28 @@
 
     {% if linklists[name].links.size > 0 %}
       <div class="sidebar-link-list">
-        <h4 class="sidebar-link-list-title meta">{{ linklists[name].title }}</h4>
+        <h4 class="sidebar-link-list-title meta">{% comment %}ly_code_replace_for_[ linklists[name].title ]_begin{% endcomment %}{% include 'ly-title' with linklists[name] %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</h4>
 
         <ul>
           {% for link in linklists[name].links %}
             {% include 'has-dropdown' %}
             {% unless link.title == 'Mega Nav' %}
               <li class="{% if link.active %}active{% endif %} {% if has-dropdown %}has-children{% endif %}">
-                <a href="{{ link.url }}">{{ link.title }}</a>
+                <a href="{{ link.url }}">{% comment %}ly_code_replace_for_[ link.title ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a>
                 {% if has-dropdown %}
                   <ul>
-                    <li class="{% if link.active %}active{% endif %} sidebar-link-list-mobile"><a href="{{ link.url }}">All {{ link.title}}</a></li>
+                    <li class="{% if link.active %}active{% endif %} sidebar-link-list-mobile"><a href="{{ link.url }}"><ly-as-9425239>All</ly-as-9425239> {% comment %}ly_code_replace_for_[ link.title]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation}}{% comment %}ly_code_replace_end{% endcomment %}</a></li>
                     {% for link in link.links %}
                       <li class="{% if link.active %}active{% endif %} {% if has-dropdown %}has-children{% endif %}">
-                        <a href="{{ link.url }}">{{ link.title }}</a>
+                        <a href="{{ link.url }}">{% comment %}ly_code_replace_for_[ link.title ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a>
 
                         {% include 'has-dropdown' %}
                         {% if has-dropdown %}
                           <ul>
-                            <li class="{% if link.active %}active{% endif %} sidebar-link-list-mobile"><a href="{{ link.url }}">All {{ link.title}}</a></li>
+                            <li class="{% if link.active %}active{% endif %} sidebar-link-list-mobile"><a href="{{ link.url }}"><ly-as-9425239>All</ly-as-9425239> {% comment %}ly_code_replace_for_[ link.title]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation}}{% comment %}ly_code_replace_end{% endcomment %}</a></li>
                             {% for link in link.links %}
                               <li {% if link.active %}class="active"{% endif %}>
-                                <a href="{{ link.url }}">{{ link.title }}</a>
+                                <a href="{{ link.url }}">{% comment %}ly_code_replace_for_[ link.title ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a>
                               </li>
                             {% endfor %}
                           </ul>

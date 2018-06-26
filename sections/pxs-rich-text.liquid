@@ -1,4 +1,4 @@
-<script
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<script
   type="application/json"
   data-section-id="{{ section.id }}"
   data-section-type="pxs-rich-text"
@@ -38,12 +38,12 @@
       {% if block.type == 'page' and block.settings.page %}
         {% if block.settings.show_heading %}
           <h2 class="pxs-rich-text-heading">
-            {{ pages[block.settings.page].title | escape }}
+            {% comment %}ly_code_replace_for_[ pages[block.settings.page].title | escape ]_begin{% endcomment %}{% include 'ly-title' with pages[block.settings.page] %}{{ ly_translation | escape }}{% comment %}ly_code_replace_end{% endcomment %}
           </h2>
         {% endif %}
 
         <div class="pxs-rich-text-content rte">
-          {{ pages[block.settings.page].content }}
+          {% comment %}ly_code_replace_for_[ pages[block.settings.page].content ]_begin{% endcomment %}{% include 'ly-content' with pages[block.settings.page] %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}
         </div>
       {% endif %}
     </article>

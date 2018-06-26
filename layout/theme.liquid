@@ -1,31 +1,31 @@
-<!doctype html>
-<!--[if IE 7]><html class="no-js ie7 lt-ie8 lt-ie9 lt-ie10" lang="en"> <![endif]-->
-<!--[if IE 8]><html class="no-js ie8 lt-ie9 lt-ie10" lang="en"> <![endif]-->
-<!--[if IE 9]><html class="no-js ie9 lt-ie10"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% comment %}ly_static_code_begin{% endcomment %}{% capture ly_content %}{% comment %}ly_static_code_end{% endcomment %}<!doctype html>
+<!--[if IE 7]><html class="no-js ie7 lt-ie8 lt-ie9 lt-ie10" lang="en"{% comment %}ly_dir_replace_for_[]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% if shop.metafields.languages_dir[language] == 'rtl' %} dir="rtl" {% endif %}{% comment %}ly_dir_replace_end{% endcomment %}> <![endif]-->
+<!--[if IE 8]><html class="no-js ie8 lt-ie9 lt-ie10" lang="en"{% comment %}ly_dir_replace_for_[]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% if shop.metafields.languages_dir[language] == 'rtl' %} dir="rtl" {% endif %}{% comment %}ly_dir_replace_end{% endcomment %}> <![endif]-->
+<!--[if IE 9]><html class="no-js ie9 lt-ie10"{% comment %}ly_dir_replace_for_[]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% if shop.metafields.languages_dir[language] == 'rtl' %} dir="rtl" {% endif %}{% comment %}ly_dir_replace_end{% endcomment %}> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"{% comment %}ly_dir_replace_for_[]_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% if shop.metafields.languages_dir[language] == 'rtl' %} dir="rtl" {% endif %}{% comment %}ly_dir_replace_end{% endcomment %}> <!--<![endif]-->
 <head>
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
   <title>
-    {{ page_title }}
+    {{ langify_title }}
 
     {% if current_tags %}
-      &ndash; {{ 'blogs.blog.seo_title' | t }} "{{ current_tags | join: ', ' }}"
+      &ndash; {% comment %}ly_i18n_replace_for_[ 'blogs.blog.seo_title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'blogs.blog.seo_title' | t }}{% endcapture %}{% include 'ly-static-string' with '9423733' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %} "{{ current_tags | join: ', ' }}"
     {% endif %}
 
     {% if current_page != 1 %}
-      &ndash; {{ 'general.pagination.seo_title' | t }} {{ current_page }}
+      &ndash; {% comment %}ly_i18n_replace_for_[ 'general.pagination.seo_title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.pagination.seo_title' | t }}{% endcapture %}{% include 'ly-static-string' with '9423734' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %} {{ current_page }}
     {% endif %}
 
-    {% unless page_title contains shop.name %}
-      &ndash; {{ shop.name }}
+    {% unless langify_title contains langify_shop_name %}
+      &ndash; {{ langify_shop_name }}
     {% endunless %}
   </title>
 
-  {% if page_description %}
-    <meta name="description" content="{{ page_description | escape }}" />
+  {% if langify_description %}
+    <meta name="description" content="{{ langify_description | escape }}" />
   {% endif %}
 
   {% if settings.favicon %}
@@ -40,15 +40,15 @@
   {% include 'social-meta' %}
 
   <!-- Theme CSS -->
-  {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+  {% comment %}ly_asset_replace_for_[ 'theme.scss.css' | asset_url | stylesheet_tag ]_begin{% endcomment %}{% assign ly_asset = 'theme.scss.css' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | stylesheet_tag }}{% comment %}ly_asset_replace_end{% endcomment %}
 
   <!-- Third Party JS Libraries -->
-  {{ 'modernizr-2.8.2.min.js' | asset_url | script_tag }}
+  {% comment %}ly_asset_replace_for_[ 'modernizr-2.8.2.min.js' | asset_url | script_tag ]_begin{% endcomment %}{% assign ly_asset = 'modernizr-2.8.2.min.js' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | script_tag }}{% comment %}ly_asset_replace_end{% endcomment %}
 
   <!-- Add media query support to IE8 -->
   <!--[if lt IE 9]>
-  <script src="{{ 'respond.min.js' | asset_url }}"></script>
-  <link href="{{ 'respond-proxy.html' | asset_url | split: '?' | first }}" id="respond-proxy" rel="respond-proxy" />
+  <script src="{% comment %}ly_asset_replace_for_[ 'respond.min.js' | asset_url ]_begin{% endcomment %}{% assign ly_asset = 'respond.min.js' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  }}{% comment %}ly_asset_replace_end{% endcomment %}"></script>
+  <link href="{% comment %}ly_asset_replace_for_[ 'respond-proxy.html' | asset_url | split: '?' | first ]_begin{% endcomment %}{% assign ly_asset = 'respond-proxy.html' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | split: '?' | first }}{% comment %}ly_asset_replace_end{% endcomment %}" id="respond-proxy" rel="respond-proxy" />
   {% assign respond_js_secret_key = shop.domain | md5 %}
   <link href="//{{ shop.domain }}/search?q={{ respond_js_secret_key }}" id="respond-redirect" rel="respond-redirect" />
   <script src="//{{ shop.domain }}/search?q={{ respond_js_secret_key }}" type="text/javascript"></script>
@@ -57,7 +57,7 @@
   <!-- Theme object -->
   {% include 'theme-options' %}
 
-</head>
+{% comment %}ly_dir_styles_begin{% endcomment %}{% assign language = cart.attributes["language"] %}{% if language == nil %}{% assign language = shop.metafields["languages"]["default"] %}{% endif %}{% if shop.metafields.languages_dir[language] == 'rtl' %}{% comment %}ly_asset_replace_for_[ 'ly-rtl.css' | asset_url | stylesheet_tag ]_begin{% endcomment %}{% assign ly_asset = 'ly-rtl.css' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | stylesheet_tag }}{% comment %}ly_asset_replace_end{% endcomment %}{% endif %}{% comment %}ly_dir_styles_end{% endcomment %}</head>
 
 {% assign sidebar = false %}
 {% if settings.enable-sidebar == 'all' %}
@@ -93,14 +93,14 @@
   {% section 'footer' %}
 
   <!-- Scripts -->
-  {{ 'jquery-1.11.1.min.js' | asset_url | script_tag }}
+  {% comment %}ly_asset_replace_for_[ 'jquery-1.11.1.min.js' | asset_url | script_tag ]_begin{% endcomment %}{% assign ly_asset = 'jquery-1.11.1.min.js' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | script_tag }}{% comment %}ly_asset_replace_end{% endcomment %}
   {{ 'api.jquery.js' | shopify_asset_url | script_tag }}
 
   {% if template contains 'cart' %}
     {{ "//ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js" | script_tag }}
     {{ "/services/javascripts/countries.js" | script_tag }}
     {{ "shopify_common.js" | shopify_asset_url | script_tag }}
-    {{ 'jquery.cart.min.js' | asset_url | script_tag }}
+    {% comment %}ly_asset_replace_for_[ 'jquery.cart.min.js' | asset_url | script_tag ]_begin{% endcomment %}{% assign ly_asset = 'jquery.cart.min.js' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | script_tag }}{% comment %}ly_asset_replace_end{% endcomment %}
   {% endif %}
 
   {% if template contains 'customers' %}
@@ -110,11 +110,12 @@
 
   {% if settings.enable_currency_switcher %}
     {{ "//cdn.shopify.com/s/javascripts/currencies.js" | script_tag }}
-    {{ "jquery.currencies.js" | asset_url | script_tag }}
+    {% comment %}ly_asset_replace_for_[ "jquery.currencies.js" | asset_url | script_tag ]_begin{% endcomment %}{% assign ly_asset = "jquery.currencies.js" %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | script_tag }}{% comment %}ly_asset_replace_end{% endcomment %}
   {% endif %}
 
-  {{ 'plugins.js' | asset_url | script_tag }}
-  {{ 'theme.js' | asset_url | script_tag }}
+  {% comment %}ly_asset_replace_for_[ 'plugins.js' | asset_url | script_tag ]_begin{% endcomment %}{% assign ly_asset = 'plugins.js' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | script_tag }}{% comment %}ly_asset_replace_end{% endcomment %}
+  {% comment %}ly_asset_replace_for_[ 'theme.js' | asset_url | script_tag ]_begin{% endcomment %}{% assign ly_asset = 'theme.js' %}{% include 'ly-asset' with ly_asset %}{{ ly_translation  | script_tag }}{% comment %}ly_asset_replace_end{% endcomment %}
 
-</body>
+{% comment %}ly_static_code_begin{% endcomment %}{% include 'ly-languages' %}{% comment %}ly_static_code_end{% endcomment %}</body>
 </html>
+{% comment %}ly_static_code_begin{% endcomment %}{% endcapture %}{% include 'ly-static' with ly_content %}{% comment %}ly_static_code_end{% endcomment %}

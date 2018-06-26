@@ -1,5 +1,5 @@
-{%- capture cartText -%}
-  {{- 'layout.header.cart_item_count.one' | t | append: '|' }}{{ 'layout.header.cart_item_count.other' | t -}}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{%- capture cartText -%}
+  {% comment %}ly_i18n_replace_for_[ 'layout.header.cart_item_count.one' | t | append: '|' ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.header.cart_item_count.one' | t | append: '|' }}{% endcapture %}{% include 'ly-static-string' with '9425130' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | append: '|' }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}{% comment %}ly_i18n_replace_for_[ 'layout.header.cart_item_count.other' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'layout.header.cart_item_count.other' | t }}{% endcapture %}{% include 'ly-static-string' with '9425131' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
 {%- endcapture -%}
 
 <script
@@ -19,8 +19,8 @@
       "enableHistory": {{ enable_history | json }},
       "imageZoom": {{ section.settings.enable_zoom }},
       "linkedOptions": true,
-      "soldOutText": {{ 'products.product.sold_out' | t | json }},
-      "unavailableText": {{ 'products.product.unavailable' | t | json }}
+      "soldOutText": {% comment %}ly_i18n_replace_for_[ 'products.product.sold_out' | t | json ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.sold_out' | t | json }}{% endcapture %}{% include 'ly-static-string' with '9425132' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | json }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %},
+      "unavailableText": {% comment %}ly_i18n_replace_for_[ 'products.product.unavailable' | t | json ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.unavailable' | t | json }}{% endcapture %}{% include 'ly-static-string' with '9425133' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | json }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
     }
   }
 </script>
@@ -84,7 +84,7 @@
   {% if enableRelatedProducts and collection.products.size > 1 %}
     <div class="related-products">
 
-      <h4 class="section-title">{{ 'products.related_products.title' | t }}</h4>
+      <h4 class="section-title">{% comment %}ly_i18n_replace_for_[ 'products.related_products.title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.related_products.title' | t }}{% endcapture %}{% include 'ly-static-string' with '9425134' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h4>
 
       {% assign numberOfRelatedProductsToShow = productsPerRow | plus: 1 %}
 

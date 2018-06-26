@@ -1,4 +1,4 @@
-<div data-section-id="{{ section.id }}" data-section-type="featured-images">
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div data-section-id="{{ section.id }}" data-section-type="featured-images">
 
   {% assign sectionTitle = section.settings.title | escape %}
   {% assign sectionBorder = section.settings.border %}
@@ -51,7 +51,7 @@
 
             <div class="home-feature">
               <div class="home-feature-image">
-                {{- image_html -}}
+                {{ image_html }}
               </div>
 
               {% if url != blank %}
@@ -86,9 +86,9 @@
               <a class="home-feature-link" href="#"></a>
 
               <div class="home-feature-content text-color-dark text-positioned-center rte">
-                <p>{{ 'onboarding.featured_images.text_above' | t }}</p>
-                <h3>{{ 'onboarding.featured_images.title' | t }}</h3>
-                <p>{{ 'onboarding.featured_images.text_below' | t }}</p>
+                <p>{% comment %}ly_i18n_replace_for_[ 'onboarding.featured_images.text_above' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'onboarding.featured_images.text_above' | t }}{% endcapture %}{% include 'ly-static-string' with '9425097' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</p>
+                <h3>{% comment %}ly_i18n_replace_for_[ 'onboarding.featured_images.title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'onboarding.featured_images.title' | t }}{% endcapture %}{% include 'ly-static-string' with '9425098' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h3>
+                <p>{% comment %}ly_i18n_replace_for_[ 'onboarding.featured_images.text_below' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'onboarding.featured_images.text_below' | t }}{% endcapture %}{% include 'ly-static-string' with '9425099' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</p>
               </div>
             </div>
           {% endfor %}

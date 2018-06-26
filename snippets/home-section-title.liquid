@@ -1,4 +1,4 @@
-{% if conditional != blank or conditional.size > 0 %}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% if conditional != blank or conditional.size > 0 %}
   {% if sectionTitle != blank %}
     <h4 class="section-title">{{ sectionTitle }}</h4>
   {% endif %}

@@ -1,4 +1,4 @@
-
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}
 <article class="blog-post">
 
   <div class="post-meta meta">
@@ -7,7 +7,7 @@
       <span class="post-author">&bull; {{ article.author }}</span>
     {% endif %}
     {% if article.comments_enabled? and article.comments.size > 0 and settings.blog-show-comment-count %}
-      <span class="post-comment-count">&bull; {{ 'blogs.comments.count' | t: count: article.comments_count }}</span>
+      <span class="post-comment-count">&bull; {% comment %}ly_i18n_replace_for_[ 'blogs.comments.count' | t: count: article.comments_count ]_begin{% endcomment %}{% if article.comments_count  == 0 %}{% capture ly_template %}{{ 'blogs.comments.count' | t: count: article.comments_count }}{% endcapture %}{% include 'ly-static-string' with '9425143' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = article.comments_count  %}{% assign ly_template = ly_template | replace: '[[count]]', replacement %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% elsif article.comments_count  == 1 %}{% capture ly_template %}{{ 'blogs.comments.count' | t: count: article.comments_count }}{% endcapture %}{% include 'ly-static-string' with '9425142' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = article.comments_count  %}{% assign ly_template = ly_template | replace: '[[count]]', replacement %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% elsif article.comments_count  == 2 %}{% capture ly_template %}{{ 'blogs.comments.count' | t: count: article.comments_count }}{% endcapture %}{% include 'ly-static-string' with '9425143' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = article.comments_count  %}{% assign ly_template = ly_template | replace: '[[count]]', replacement %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% else %}{% capture ly_template %}{{ 'blogs.comments.count' | t: count: article.comments_count }}{% endcapture %}{% include 'ly-static-string' with '9425143' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = article.comments_count  %}{% assign ly_template = ly_template | replace: '[[count]]', replacement %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
     {% endif %}
     {% if article.tags.size > 0 and settings.blog-show-tags %}
       <span class="post-tags">&bull;
@@ -18,7 +18,7 @@
     {% endif %}
   </div>
 
-  <h3 class="post-title"><a href="{{ article.url }}">{{ article.title }}</a></h3>
+  <h3 class="post-title"><a href="{{ article.url }}">{% comment %}ly_code_replace_for_[ article.title ]_begin{% endcomment %}{% include 'ly-title' with article %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a></h3>
 
   <div class="rte post-content">
     {% if article.image %}
@@ -47,12 +47,12 @@
       </div>
     {% endif %}
     {% if article.excerpt != blank %}
-      {{ article.excerpt }}
+      {% comment %}ly_code_replace_for_[ article.excerpt ]_begin{% endcomment %}{% include 'ly-excerpt' with article %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}
     {% else %}
-      <p>{{ article.content | strip_html | truncatewords: 50 }}</p>
+      <p>{% comment %}ly_code_replace_for_[ article.content | strip_html | truncatewords: 50 ]_begin{% endcomment %}{% include 'ly-content' with article %}{{ ly_translation | strip_html | truncatewords: 50 }}{% comment %}ly_code_replace_end{% endcomment %}</p>
     {% endif %}
     <p>
-      <a href="{{ article.url }}">{{ 'blogs.article.read_more' | t }}</a>
+      <a href="{{ article.url }}">{% comment %}ly_i18n_replace_for_[ 'blogs.article.read_more' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'blogs.article.read_more' | t }}{% endcapture %}{% include 'ly-static-string' with '9425146' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
     </p>
   </div>
 

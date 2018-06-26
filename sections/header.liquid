@@ -1,3 +1,4 @@
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}
 <div data-section-id="{{ section.id }}" data-section-type="header">
 
   {%- assign logo = section.settings.image -%}
@@ -8,7 +9,7 @@
     <header class="main-header clearfix" role="banner">
 
       <form class="header-search-form" action="/search" method="get">
-        <input class="header-search-input" name="q" type="text" placeholder="{{ 'general.search.submit' | t }}" />
+        <input class="header-search-input" name="q" type="text" placeholder="{% comment %}ly_i18n_replace_for_[ 'general.search.submit' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.search.submit' | t }}{% endcapture %}{% include 'ly-static-string' with '9424432' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}" />
       </form>
 
       <div class="branding">
@@ -28,9 +29,9 @@
           </a>
         {% else %}
           {% if template contains 'index' %}
-            <h1 class="site-title">{{ shop.name }}</h1>
+            <h1 class="site-title">{{ langify_shop_name }}</h1>
           {% else %}
-            <div class="site-title"><a href="/">{{ shop.name }}</a></div>
+            <div class="site-title"><a href="/">{{ langify_shop_name }}</a></div>
           {% endif %}
         {% endif %}
       </div>
@@ -38,10 +39,11 @@
       <div class="header-tools">
         <a class="cart-count {% if cart.item_count < 100 %}contain-count{% endif %}" href="/cart">
           <span class="bag-count">{{ cart.item_count }}</span>
-          <span class="bag-text">{{ 'layout.header.cart_item_count' | t: count: cart.item_count }}</span>
+          <span class="bag-text">{% comment %}ly_i18n_replace_for_[ 'layout.header.cart_item_count' | t: count: cart.item_count ]_begin{% endcomment %}{% if cart.item_count  == 0 %}{% capture ly_template %}{{ 'layout.header.cart_item_count' | t: count: cart.item_count }}{% endcapture %}{% include 'ly-static-string' with '9424434' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = cart.item_count  %}{% assign ly_template = ly_template | replace: '[[count]]', replacement %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% elsif cart.item_count  == 1 %}{% capture ly_template %}{{ 'layout.header.cart_item_count' | t: count: cart.item_count }}{% endcapture %}{% include 'ly-static-string' with '9424433' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = cart.item_count  %}{% assign ly_template = ly_template | replace: '[[count]]', replacement %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% elsif cart.item_count  == 2 %}{% capture ly_template %}{{ 'layout.header.cart_item_count' | t: count: cart.item_count }}{% endcapture %}{% include 'ly-static-string' with '9424434' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = cart.item_count  %}{% assign ly_template = ly_template | replace: '[[count]]', replacement %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% else %}{% capture ly_template %}{{ 'layout.header.cart_item_count' | t: count: cart.item_count }}{% endcapture %}{% include 'ly-static-string' with '9424434' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = cart.item_count  %}{% assign ly_template = ly_template | replace: '[[count]]', replacement %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
         </a>
 
         {% include 'currency-switcher' with 'header' %}
+        {% include 'ly-languages-switcher' %}
       </div>
 
       <div class="mobile-header-tools">
@@ -75,7 +77,7 @@
                 aria-controls="mega-menu-item-{{ link.handle }}"
                 aria-expanded="false"
               >
-                <a href="{{ link.url }}">{{ link.title }} <span class="mobile-tier-toggle"></span></a>
+                <a href="{{ link.url }}">{% comment %}ly_code_replace_for_[ link.title ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %} <span class="mobile-tier-toggle"></span></a>
                 {% include 'mega-navigation' with megaNavImages %}
               </li>
             {% else %}
@@ -89,7 +91,7 @@
                   aria-expanded="false"
                 {% endif %}
               >
-                <a href="{{ link.url }}">{{ link.title }} {% if has-dropdown %}<span class="mobile-tier-toggle"></span>{% endif %}</a>
+                <a href="{{ link.url }}">{% comment %}ly_code_replace_for_[ link.title ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %} {% if has-dropdown %}<span class="mobile-tier-toggle"></span>{% endif %}</a>
                 {% if has-dropdown %}
                   {% assign index = 2 %}
                   {% include 'navigation-links' %}
@@ -100,9 +102,9 @@
           {% if shop.customer_accounts_enabled %}
             <li class="customer-links">
               {% if customer %}
-                <a href="/account">{{ 'customers.account.title' | t }}</a>
+                <a href="/account">{% comment %}ly_i18n_replace_for_[ 'customers.account.title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'customers.account.title' | t }}{% endcapture %}{% include 'ly-static-string' with '9424437' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
               {% else %}
-                {{ 'customers.account.title' | t | customer_login_link }}
+                {% comment %}ly_i18n_replace_for_[ 'customers.account.title' | t | customer_login_link ]_begin{% endcomment %}{% capture ly_template %}{{ 'customers.account.title' | t | customer_login_link }}{% endcapture %}{% include 'ly-static-string' with '9424438' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | customer_login_link }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
               {% endif %}
             </li>
           {% endif %}
@@ -111,7 +113,6 @@
     </header>
   </div>
 </div>
-
 {% schema %}
 {
   "name": "Header",

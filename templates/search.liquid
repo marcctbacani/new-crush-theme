@@ -1,11 +1,11 @@
-{% assign respond_js_secret_key = shop.domain | md5 %}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% assign respond_js_secret_key = shop.domain | md5 %}
 {% unless search.terms == respond_js_secret_key %}
   <form class="search-form" action="/search" method="get">
     <div class="search-input">
-      <input name="q" type="text" placeholder="{{ 'general.search.input_placeholder' | t }}" value="{{ search.terms | escape }}" />
+      <input name="q" type="text" placeholder="{% comment %}ly_i18n_replace_for_[ 'general.search.input_placeholder' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.search.input_placeholder' | t }}{% endcapture %}{% include 'ly-static-string' with '9425373' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}" value="{{ search.terms | escape }}" />
     </div>
     <div class="search-submit">
-      <input type="submit" value="{{ 'general.search.submit' | t }}" />
+      <input type="submit" value="{% comment %}ly_i18n_replace_for_[ 'general.search.submit' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.search.submit' | t }}{% endcapture %}{% include 'ly-static-string' with '9425374' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}" />
     </div>
   </form>
 
@@ -16,10 +16,10 @@
 
       <div class="search-results-count">
         {% capture results %}<em>{{ search.terms }}</em>{% endcapture %}
-        <h3>{{ 'general.search.results_html' | t: search_terms: results }}</h3>
+        <h3>{% comment %}ly_i18n_replace_for_[ 'general.search.results_html' | t: search_terms: results ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.search.results_html' | t: search_terms: results }}{% endcapture %}{% include 'ly-static-string' with '9425376' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = results  %}{% assign ly_template = ly_template | replace: '[[search_terms]]', replacement %}{% if escape_content %}{{ ly_template}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h3>
 
         {% if search.results_count == 0 %}
-          <p>{{ 'general.search.no_results_html' | t: search_terms: results }}</p>
+          <p>{% comment %}ly_i18n_replace_for_[ 'general.search.no_results_html' | t: search_terms: results ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.search.no_results_html' | t: search_terms: results }}{% endcapture %}{% include 'ly-static-string' with '9425378' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = results  %}{% assign ly_template = ly_template | replace: '[[search_terms]]', replacement %}{% if escape_content %}{{ ly_template}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</p>
         {% endif %}
       </div>
 
@@ -44,12 +44,12 @@
                         lazy: true
                       %}
                     {% endif %}
-                    <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+                    <h3><a href="{{ item.url }}">{% comment %}ly_code_replace_for_[ item.title ]_begin{% endcomment %}{% include 'ly-title' with item %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a></h3>
                     <p class="meta">{{ item.published_at | date: "%b %d, %Y" }}</p>
-                    <p>{{ item.excerpt_or_content | strip_html | truncatewords: 30 | highlight: search.terms }}</p>
+                    <p>{% comment %}ly_code_replace_for_[ item.excerpt_or_content | strip_html | truncatewords: 30 | highlight: search.terms ]_begin{% endcomment %}{% include 'ly-excerpt_or_content' with item %}{{ ly_translation | strip_html | truncatewords: 30 | highlight: search.terms }}{% comment %}ly_code_replace_end{% endcomment %}</p>
                   {% else %}
-                    <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
-                    <p>{{ item.content | strip_html | truncatewords: 30 | highlight: search.terms }}</p>
+                    <h3><a href="{{ item.url }}">{% comment %}ly_code_replace_for_[ item.title ]_begin{% endcomment %}{% include 'ly-title' with item %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}</a></h3>
+                    <p>{% comment %}ly_code_replace_for_[ item.content | strip_html | truncatewords: 30 | highlight: search.terms ]_begin{% endcomment %}{% include 'ly-content' with item %}{{ ly_translation | strip_html | truncatewords: 30 | highlight: search.terms }}{% comment %}ly_code_replace_end{% endcomment %}</p>
                   {% endif %}
 
                   {% assign readMoreText = 'Read more' %}

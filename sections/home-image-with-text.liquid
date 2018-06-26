@@ -1,4 +1,4 @@
-<div data-section-id="{{ section.id }}" data-section-type="featured-content">
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div data-section-id="{{ section.id }}" data-section-type="featured-content">
 
   {% assign sectionTitle = section.settings.title | escape %}
   {% assign sectionBorder = section.settings.border %}
@@ -38,7 +38,7 @@
             <h2>{{ imageTitle }}</h2>
           {% else %}
             {% if featuredImage == blank %}
-              <h2>{{ 'onboarding.featured_content.page_title' | t }}</h2>
+              <h2>{% comment %}ly_i18n_replace_for_[ 'onboarding.featured_content.page_title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'onboarding.featured_content.page_title' | t }}{% endcapture %}{% include 'ly-static-string' with '9425100' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h2>
             {% endif %}
           {% endif %}
 
@@ -46,13 +46,13 @@
             <p>{{ imageCaption }}</p>
           {% else %}
             {% if featuredImage == blank %}
-              <p>{{ 'onboarding.featured_content.page_excerpt' | t }}</p>
+              <p>{% comment %}ly_i18n_replace_for_[ 'onboarding.featured_content.page_excerpt' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'onboarding.featured_content.page_excerpt' | t }}{% endcapture %}{% include 'ly-static-string' with '9425101' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</p>
             {% endif %}
           {% endif %}
         </div>
 
         <div class="home-embedded-content rte">
-          {{- image_html -}}
+          {{ image_html }}
         </div>
       </div>
     </div>

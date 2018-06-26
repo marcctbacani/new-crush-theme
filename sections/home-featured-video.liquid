@@ -1,4 +1,4 @@
-<div data-section-id="{{ section.id }}" data-section-type="featured-video">
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div data-section-id="{{ section.id }}" data-section-type="featured-video">
 
   {% assign sectionTitle = section.settings.title | escape %}
   {% assign sectionBorder = section.settings.border %}
@@ -55,15 +55,15 @@
       <div class="home-video-content-wrap">
         <div class="home-video-screenshot">
           <span class="home-video-play-button mobile meta">
-            {{ 'general.home_page.video_button_text' | t }}
+            {% comment %}ly_i18n_replace_for_[ 'general.home_page.video_button_text' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.home_page.video_button_text' | t }}{% endcapture %}{% include 'ly-static-string' with '9425096' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
           </span>
 
-          {{- image_html -}}
+          {{ image_html }}
         </div>
 
         <div class="home-video-content rte">
           <span class="home-video-play-button meta">
-            {{ 'general.home_page.video_button_text' | t }}
+            {% comment %}ly_i18n_replace_for_[ 'general.home_page.video_button_text' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.home_page.video_button_text' | t }}{% endcapture %}{% include 'ly-static-string' with '9425096' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
           </span>
 
           {% if videoTitle != blank %}

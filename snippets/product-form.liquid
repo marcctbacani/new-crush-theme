@@ -1,4 +1,4 @@
-{% unless form_id %}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% unless form_id %}
   {% assign form_id = product.id %}
 {% endunless %}
 
@@ -12,8 +12,8 @@
   data-product-form="{{ form_id }}"
 >
 
-  <meta itemprop="name" content="{{ product.title }}">
-  <meta itemprop="brand" content="{{ product.vendor }}">
+  <meta itemprop="name" content="{% comment %}ly_code_replace_for_[ product.title ]_begin{% endcomment %}{% include 'ly-title' with product %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}">
+  <meta itemprop="brand" content="{% comment %}ly_code_replace_for_[ product.vendor ]_begin{% endcomment %}{% include 'ly-vendor' with product %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}">
   <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
   <meta itemprop="image" content="{{ product | img_url: 'grande' }}">
 
@@ -37,13 +37,13 @@
                   {% if variant == selected_variant %}selected="selected"{% endif %}
                   value="{{ variant.id }}"
                   data-variant-id="{{ variant.id }}">
-                  {{ variant.title }} - {{ variant.price | money }}
+                  {% comment %}ly_code_replace_for_[ variant.title ]_begin{% endcomment %}{% include 'ly-title' with variant %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %} - {{ variant.price | money }}
                 </option>
               {% else %}
                 <option disabled="disabled"
                   value="{{ variant.id }}"
                   data-variant-id="{{ variant.id }}">
-                  {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                  {% comment %}ly_code_replace_for_[ variant.title ]_begin{% endcomment %}{% include 'ly-title' with variant %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %} - {% comment %}ly_i18n_replace_for_[ 'products.product.sold_out' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.sold_out' | t }}{% endcapture %}{% include 'ly-static-string' with '9425205' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}
                 </option>
               {% endif %}
             {% endfor %}
@@ -55,14 +55,14 @@
           name="id"
           value="{{ product.variants[0].id }}"
           type="hidden"
-          data-variant-title="{{ product.variants[0].title }}" />
+          data-variant-title="{% comment %}ly_code_replace_for_[ product.variants[0].title ]_begin{% endcomment %}{% include 'ly-title' with product.variants[0] %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %}" />
       {% endif %}
     </div>
 
     {% if section.settings.enable_product_quantity %}
       <div class="product-quantity">
         <div class="input-wrapper">
-          <label for="quantity">{{ 'general.general.quantity' | t }}</label>
+          <label for="quantity">{% comment %}ly_i18n_replace_for_[ 'general.general.quantity' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.general.quantity' | t }}{% endcapture %}{% include 'ly-static-string' with '9425206' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</label>
           <input type="text" name="quantity" id="quantity" value="1" />
         </div>
       </div>
@@ -93,14 +93,14 @@
 
       <span class="payment-buttons-container">
         {% if variant.available %}
-          <input class="add-to-cart" type="submit" value="{{ 'products.product.add_to_cart' | t }}" />
+          <input class="add-to-cart" type="submit" value="{% comment %}ly_i18n_replace_for_[ 'products.product.add_to_cart' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.add_to_cart' | t }}{% endcapture %}{% include 'ly-static-string' with '9425207' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}" />
           <link itemprop="availability" href="http://schema.org/InStock">
 
           {% if section.settings.show_spb %}
             {{ form | payment_button }}
           {% endif %}
         {% else %}
-          <input type="button" class="add-to-cart disabled" disabled="disabled" value="{{ 'products.product.sold_out' | t }}" />
+          <input type="button" class="add-to-cart disabled" disabled="disabled" value="{% comment %}ly_i18n_replace_for_[ 'products.product.sold_out' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'products.product.sold_out' | t }}{% endcapture %}{% include 'ly-static-string' with '9425205' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}" />
           <link itemprop="availability" href="http://schema.org/OutOfStock">
         {% endif %}
       </span>

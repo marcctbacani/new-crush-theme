@@ -1,4 +1,4 @@
-<div data-section-id="{{ section.id }}" data-section-type="page-collections-list">
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div data-section-id="{{ section.id }}" data-section-type="page-collections-list">
 
   {% assign showDescriptions = section.settings.show_descriptions %}
   {% assign collectionTextStyle = section.settings.text_style %}

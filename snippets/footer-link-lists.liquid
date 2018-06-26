@@ -1,4 +1,4 @@
-{% assign footerLinkLists = "footer-link-list-1|footer-link-list-2" | split: "|" %}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% assign footerLinkLists = "footer-link-list-1|footer-link-list-2" | split: "|" %}
 <div class="footer-module footer-link-lists">
   {% for list in footerLinkLists %}
 
@@ -6,10 +6,10 @@
 
     {% if linklists[name].links.size > 0 %}
       <div class="footer-link-list">
-        <h4>{{ linklists[name].title | escape }}</h4>
+        <h4>{% comment %}ly_code_replace_for_[ linklists[name].title | escape ]_begin{% endcomment %}{% include 'ly-title' with linklists[name] %}{{ ly_translation | escape }}{% comment %}ly_code_replace_end{% endcomment %}</h4>
         <ul>
           {% for link in linklists[name].links %}
-            <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+            <li><a href="{{ link.url }}">{% comment %}ly_code_replace_for_[ link.title | escape ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation | escape }}{% comment %}ly_code_replace_end{% endcomment %}</a></li>
           {% endfor %}
         </ul>
       </div>

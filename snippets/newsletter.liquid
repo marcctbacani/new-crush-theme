@@ -1,10 +1,10 @@
-<div class="newsletter-subscription">
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div class="newsletter-subscription">
   {% if block.settings.title != blank %}
     <h4>{{ block.settings.title | escape }}</h4>
   {% endif %}
 
   {% form 'customer' %}
-    <input class="newsletter-email" name="contact[email]" type="email" placeholder="your@email.com" value="">
+    <input class="newsletter-email" name="contact[email]" type="email" placeholder="<ly-as-9425181>your@email.com</ly-as-9425181>" value="">
     <input type="hidden" id="contact_tags" name="contact[tags]" value="prospect,newsletter"/>
     <input class="newsletter-submit" name="subscribe" type="submit" value="&#57424;">
   {% endform %}

@@ -1,4 +1,4 @@
-<ul
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<ul
   id="mega-menu-item-{{ link.handle }}"
   class="mega-nav-dropdown"
 >
@@ -28,14 +28,14 @@
         {% endif %}
 
         {% include 'has-dropdown' %}
-        <a href="{{ link.url }}" class="meta tier-toggle-wrap">{{ link.title }} {% if has-dropdown %}<span class="mobile-tier-toggle"></span>{% endif %}</a>
+        <a href="{{ link.url }}" class="meta tier-toggle-wrap">{% comment %}ly_code_replace_for_[ link.title ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %} {% if has-dropdown %}<span class="mobile-tier-toggle"></span>{% endif %}</a>
         {% assign firstTierTitle = link.title %}
 
         <ul class="mega-nav-tier-1">
           {% for link in link.links %}
             {% include 'has-dropdown' %}
             <li class="{% if has-dropdown %}has-children{% endif %}">
-              <a href="{{ link.url }}">{{ link.title }} {% if has-dropdown %}<span class="mobile-tier-toggle"></span>{% endif %}</a>
+              <a href="{{ link.url }}">{% comment %}ly_code_replace_for_[ link.title ]_begin{% endcomment %}{% include 'ly-title' with link %}{{ ly_translation }}{% comment %}ly_code_replace_end{% endcomment %} {% if has-dropdown %}<span class="mobile-tier-toggle"></span>{% endif %}</a>
 
               {% if has-dropdown %}
                 {% assign index = 2 %}

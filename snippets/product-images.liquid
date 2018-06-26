@@ -1,4 +1,4 @@
-{% if product.images.size > 0 %}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% if product.images.size > 0 %}
   <div class="product-images clearfix">
     <div class="product-main-image {% if section.settings.enable_zoom %}zoom-active{% endif %}">
       {%

@@ -1,4 +1,4 @@
-<div data-section-id="{{ section.id }}" data-section-type="slideshow">
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div data-section-id="{{ section.id }}" data-section-type="slideshow">
 
   {% assign sectionTitle = section.settings.title | escape %}
   {% assign sectionBorder = section.settings.border %}
@@ -66,7 +66,7 @@
                   <a class="slide-link" href="{{ linkUrl }}"></a>
                 {% endif %}
 
-                {{- image_html -}}
+                {{ image_html }}
 
                 {% if textAbove != blank or heading != blank or textBelow != blank %}
                   <div class="slide-content" style="color: {{ textColor }};">
@@ -95,9 +95,9 @@
                 </div>
 
                 <div class="slide-content" style="color: {{ textColor }};">
-                  <p>{{ 'onboarding.slideshow.text_above' | t }}</p>
-                  <h3 class="slide-title">{{ 'onboarding.slideshow.slide_title' | t }}</h3>
-                  <p>{{ 'onboarding.slideshow.text_below' | t }}</p>
+                  <p>{% comment %}ly_i18n_replace_for_[ 'onboarding.slideshow.text_above' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'onboarding.slideshow.text_above' | t }}{% endcapture %}{% include 'ly-static-string' with '9425102' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</p>
+                  <h3 class="slide-title">{% comment %}ly_i18n_replace_for_[ 'onboarding.slideshow.slide_title' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'onboarding.slideshow.slide_title' | t }}{% endcapture %}{% include 'ly-static-string' with '9425103' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h3>
+                  <p>{% comment %}ly_i18n_replace_for_[ 'onboarding.slideshow.text_below' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'onboarding.slideshow.text_below' | t }}{% endcapture %}{% include 'ly-static-string' with '9425104' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</p>
                 </div>
               </div>
             {% endfor %}

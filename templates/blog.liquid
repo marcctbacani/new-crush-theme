@@ -1,5 +1,5 @@
-{% if current_tags %}
-  <h2>{{ 'blogs.blog.tag_page_title' | t: tag: current_tags.first }}</h2>
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% if current_tags %}
+  <h2>{% comment %}ly_i18n_replace_for_[ 'blogs.blog.tag_page_title' | t: tag: current_tags.first ]_begin{% endcomment %}{% capture ly_template %}{{ 'blogs.blog.tag_page_title' | t: tag: current_tags.first }}{% endcapture %}{% include 'ly-static-string' with '9425263' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = current_tags.first  %}{% assign ly_template = ly_template | replace: '[[tag]]', replacement %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</h2>
 {% endif %}
 
 {% paginate blog.articles by 5 %}
@@ -8,7 +8,7 @@
     {% for article in blog.articles %}
       {% include 'article-list-item' %}
     {% else %}
-      <span class="empty">{{ 'blogs.blog.empty' | t }}</span>
+      <span class="empty">{% comment %}ly_i18n_replace_for_[ 'blogs.blog.empty' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'blogs.blog.empty' | t }}{% endcapture %}{% include 'ly-static-string' with '9425264' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
     {% endfor %}
   </div>
 

@@ -1,4 +1,4 @@
-<div class="footer-module footer-tweet
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<div class="footer-module footer-tweet
   {% if block.settings.twitter-id != blank %}twitter-enabled{% endif %}"
   data-twitter-id="{{ block.settings.twitter-id | escape }}"
   data-twitter-retweets="{{ block.settings.twitter-retweets }}">
@@ -12,11 +12,11 @@
       <a href="/admin/themes/{{ theme.id }}/settings">
         {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
         <span>
-          <span data-scribe="element:name">{{ 'general.general.name' | t }}</span>
+          <span data-scribe="element:name">{% comment %}ly_i18n_replace_for_[ 'general.general.name' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.general.name' | t }}{% endcapture %}{% include 'ly-static-string' with '9425177' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
         </span>
-        <span data-scribe="element:screen_name">@{{ 'general.general.name' | t }}</span>
+        <span data-scribe="element:screen_name">@{% comment %}ly_i18n_replace_for_[ 'general.general.name' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.general.name' | t }}{% endcapture %}{% include 'ly-static-string' with '9425177' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</span>
       </a>
     </div>
-    <p class="tweet">{{ 'onboarding.twitter_widget.tweet' | t }}</p>
+    <p class="tweet">{% comment %}ly_i18n_replace_for_[ 'onboarding.twitter_widget.tweet' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'onboarding.twitter_widget.tweet' | t }}{% endcapture %}{% include 'ly-static-string' with '9425178' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</p>
   {% endif %}
 </div>

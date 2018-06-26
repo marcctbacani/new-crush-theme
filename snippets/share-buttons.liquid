@@ -1,4 +1,4 @@
-{% assign showButtons = false %}
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}{% assign showButtons = false %}
 {% assign image = false %}
 
 {% if template contains 'article' or template contains 'blog' %}
@@ -48,31 +48,31 @@
   <div class="share-buttons">
 
     {% if settings.share-widget-facebook %}
-      <a target="_blank" href="//www.facebook.com/sharer.php?u={{ permalinkURL }}" class="share-facebook">{{ 'general.share_buttons.like' | t }}</a>
+      <a target="_blank" href="//www.facebook.com/sharer.php?u={{ permalinkURL }}" class="share-facebook">{% comment %}ly_i18n_replace_for_[ 'general.share_buttons.like' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.share_buttons.like' | t }}{% endcapture %}{% include 'ly-static-string' with '9425223' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
     {% endif %}
 
     {% if settings.share-widget-twitter %}
-      <a target="_blank" href="//twitter.com/share?url={{ permalinkURL }}" class="share-twitter">{{ 'general.share_buttons.tweet' | t }}</a>
+      <a target="_blank" href="//twitter.com/share?url={{ permalinkURL }}" class="share-twitter">{% comment %}ly_i18n_replace_for_[ 'general.share_buttons.tweet' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.share_buttons.tweet' | t }}{% endcapture %}{% include 'ly-static-string' with '9425224' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
     {% endif %}
 
     {% if image %}
 
       {% if settings.share-widget-pinterest %}
-        <a target="_blank" href="//pinterest.com/pin/create/button/?url={{ permalinkURL }}&amp;media=http:{{ image }}&amp;description={{ description }}" class="share-pinterest">{{ 'general.share_buttons.pin_it' | t }}</a>
+        <a target="_blank" href="//pinterest.com/pin/create/button/?url={{ permalinkURL }}&amp;media=http:{{ image }}&amp;description={{ description }}" class="share-pinterest">{% comment %}ly_i18n_replace_for_[ 'general.share_buttons.pin_it' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.share_buttons.pin_it' | t }}{% endcapture %}{% include 'ly-static-string' with '9425225' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
       {% endif %}
 
       {% if settings.share-widget-fancy %}
-        <a target="_blank" href="http://www.thefancy.com/fancyit?ItemURL={{ permalinkURL }}&amp;Title={{ description }}&amp;Category=Other&amp;ImageURL={{ image }}" class="share-fancy">{{ 'general.share_buttons.fancy' | t }}</a>
+        <a target="_blank" href="http://www.thefancy.com/fancyit?ItemURL={{ permalinkURL }}&amp;Title={{ description }}&amp;Category=Other&amp;ImageURL={{ image }}" class="share-fancy">{% comment %}ly_i18n_replace_for_[ 'general.share_buttons.fancy' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.share_buttons.fancy' | t }}{% endcapture %}{% include 'ly-static-string' with '9425226' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
       {% endif %}
 
     {% endif %}
 
     {% if settings.share-widget-google-plus %}
-      <a target="_blank" href="//plus.google.com/share?url={{ permalinkURL }}" class="share-google">{{ 'general.share_buttons.plus_one' | t }}</a>
+      <a target="_blank" href="//plus.google.com/share?url={{ permalinkURL }}" class="share-google">{% comment %}ly_i18n_replace_for_[ 'general.share_buttons.plus_one' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.share_buttons.plus_one' | t }}{% endcapture %}{% include 'ly-static-string' with '9425227' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
     {% endif %}
 
     {% if settings.share-widget-email %}
-      <a target="_blank" href="mailto:?subject={{page_title}}&amp;body={{ 'general.share_buttons.email_body' | t: link: permalinkURL }}" class="share-email">{{ 'general.share_buttons.email' | t }}</a>
+      <a target="_blank" href="mailto:?subject={{langify_title}}&amp;body={% comment %}ly_i18n_replace_for_[ 'general.share_buttons.email_body' | t: link: permalinkURL ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.share_buttons.email_body' | t: link: permalinkURL }}{% endcapture %}{% include 'ly-static-string' with '9425229' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% assign replacement = permalinkURL  %}{% assign ly_template = ly_template | replace: '[[link]]', replacement %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}" class="share-email">{% comment %}ly_i18n_replace_for_[ 'general.share_buttons.email' | t ]_begin{% endcomment %}{% capture ly_template %}{{ 'general.share_buttons.email' | t }}{% endcapture %}{% include 'ly-static-string' with '9425230' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape}}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %}</a>
     {% endif %}
   </div>
 {% endif %}

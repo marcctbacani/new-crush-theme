@@ -1,4 +1,4 @@
-<script>
+{% comment %}ly_global_begin{% endcomment %}{% include 'ly-global' %}{% comment %}ly_global_end{% endcomment %}<script>
 
   window.Shop = {};
 
@@ -8,9 +8,9 @@
   Shop.moneyFormat = {{ shop.money_format | strip_html | json }};
   Shop.moneyFormatCurrency = {{ shop.money_with_currency_format | strip_html | json }};
   Shop.cartQuantityError = {
-    title: {{ 'cart.quantity_error.title' | t | json }},
-    message: {{ 'cart.quantity_error.message' | t: quantity: '** quantity **', title: '** title **' | json }},
-    button: {{ 'cart.quantity_error.button' | t | json }},
+    title: {% comment %}ly_i18n_replace_for_[ 'cart.quantity_error.title' | t | json ]_begin{% endcomment %}{% capture ly_template %}{{ 'cart.quantity_error.title' | t | json }}{% endcapture %}{% include 'ly-static-string' with '9425240' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | json }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %},
+    message: {% comment %}ly_i18n_replace_for_[ 'cart.quantity_error.message' | t: quantity: '** quantity **', title: '** title **' | json ]_begin{% endcomment %}{% capture ly_template %}{{ 'cart.quantity_error.message' | t: quantity: '** quantity **', title: '** title **' | json }}{% endcapture %}{% include 'ly-static-string' with '9425243' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% include 'ly-static-string' with '9425241' %}{% if ly_translation %}{% assign replacement = ly_translation %}{% else %}{% assign replacement = '** quantity **' %}{% endif %}{% assign ly_template = ly_template | replace: '[[quantity]]', replacement %}{% include 'ly-static-string' with '9425242' %}{% if ly_translation %}{% assign replacement = ly_translation %}{% else %}{% assign replacement = '** title ** ' %}{% endif %}{% assign ly_template = ly_template | replace: '[[title]]', replacement %}{% if escape_content %}{{ ly_template | escape | json }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %},
+    button: {% comment %}ly_i18n_replace_for_[ 'cart.quantity_error.button' | t | json ]_begin{% endcomment %}{% capture ly_template %}{{ 'cart.quantity_error.button' | t | json }}{% endcapture %}{% include 'ly-static-string' with '9425244' %}{% if ly_translation %}{% assign escape_content = true %}{% assign ly_template = ly_translation %}{% else %}{% assign escape_content = false %}{% endif %}{% if escape_content %}{{ ly_template | escape | json }}{% else %}{{ ly_template }}{% endif %}{% comment %}ly_i18n_replace_end{% endcomment %},
   };
 
   {% if shop.customer_accounts_enabled and customer %}
