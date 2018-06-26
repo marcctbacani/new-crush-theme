@@ -58,7 +58,7 @@ locales/en.default.json:
 sections/footer.liquid:
   development: 2018-06-26T15:33:20+08:00   77a45071f3cf1b9b6c06de2dcf8713f1
 sections/header.liquid:
-  development: 2018-06-26T15:39:10+08:00   d98657e42230f7988bd73d6831d4ff7a
+  development: 2018-06-26T16:07:38+08:00   73573ea331fc4f78fe6dbfde047754c1
 sections/home-blog-posts.liquid:
   development: 2018-06-26T15:33:28+08:00   8625799ca2144599ef6f28a4f20d1356
 sections/home-collection-list.liquid:
