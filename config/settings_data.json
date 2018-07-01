@@ -3,7 +3,7 @@
     "favicon": "",
     "main-background-image": "",
     "background-color": "#ffffff",
-    "body-text-color": "#555555",
+    "body-text-color": "#303030",
     "accent-color": "#000000",
     "heading-color": "#303030",
     "meta-color": "#000000",
@@ -20,26 +20,26 @@
     "header-promo-text-color": "#ffffff",
     "header-promo-link-color": "#ffffff",
     "footer-text-color": "#303030",
-    "font_body": "pt_serif_n4",
-    "font_logo": "source_sans_pro_n7",
+    "font_body": "lato_n3",
+    "font_logo": "lato_n4",
     "store-title-font-small-caps": true,
-    "font_heading": "pt_serif_n7",
-    "heading-font-small-caps": true,
-    "font_section": "pt_serif_n4",
-    "font_meta": "open_sans_n4",
-    "font_button": "karla_n7",
-    "button-font-small-caps": true,
+    "font_heading": "lato_n4",
+    "heading-font-small-caps": false,
+    "font_section": "lato_n4",
+    "font_meta": "lato_n4",
+    "font_button": "lato_n4",
+    "button-font-small-caps": false,
     "enable-sidebar": "not-home",
     "sidebar-link-list-1": "sidebar-filter-menu",
     "sidebar-link-list-2": "",
     "sidebar-link-list-3": "",
     "product_text_style": "under",
     "product_image_flip": false,
-    "social-facebook-url": "",
-    "social-twitter-url": "",
+    "social-facebook-url": "https:\/\/www.facebook.com\/shopify",
+    "social-twitter-url": "https:\/\/twitter.com\/shopify",
     "social-google-url": "",
     "social-pinterest-url": "",
-    "social-instagram-url": "",
+    "social-instagram-url": "https:\/\/instagram.com\/shopify",
     "social-kickstarter-url": "",
     "social-vimeo-url": "",
     "social-youtube-url": "",
@@ -107,34 +107,17 @@
       "footer": {
         "type": "footer",
         "blocks": {
-          "footer-1": {
-            "type": "tweet",
-            "settings": {
-              "title": "",
-              "twitter-id": "",
-              "twitter-retweets": false
-            }
-          },
-          "footer-2": {
+          "1530350691957": {
             "type": "connect",
             "settings": {
-              "title": "",
+              "title": "newsletter and social links",
               "enable-mailing-list": true,
               "enable-social-links": true
-            }
-          },
-          "footer-3": {
-            "type": "featured-content",
-            "settings": {
-              "title": "",
-              "footer-text-box": ""
             }
           }
         },
         "block_order": [
-          "footer-1",
-          "footer-2",
-          "footer-3"
+          "1530350691957"
         ],
         "settings": {
           "show-payment-options": true
@@ -250,13 +233,13 @@
       "pxs-announcement-bar": {
         "type": "pxs-announcement-bar",
         "settings": {
-          "show_announcement": false,
+          "show_announcement": true,
           "announcement_home_only": false,
           "announcement_text": "Call attention to a special discount, feature, or promotion here.",
           "announcement_text_mobile": "Use less text on mobile!",
           "announcement_link": "",
           "announcement_color": "#ffffff",
-          "announcement_background": "#000000"
+          "announcement_background": "#ff8f2d"
         }
       }
     },

@@ -1602,11 +1602,37 @@ th {
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Larrseit';
+  src: url('{{ 'Larrseit.ttf' | asset_url }}');
+  src: url('{{ 'Larrseit.ttf' | asset_url }}') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Larrseit';
+  src: url('{{ 'Larrseit-Light.ttf' | asset_url }}');
+  src: url('{{ 'Larrseit-Light.ttf' | asset_url }}') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Albertus';
+  src: url('{{ 'AlbertusNovaRegular.ttf' | asset_url }}');
+  src: url('{{ 'AlbertusNovaRegular.ttf' | asset_url }}') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
 /* General
 -------------------------------- */
 
 body {
-  @include font($font-body);
+  font-family: "Larrseit", sans-serif;
+  font-weight: 400;	
   color: $body-color;
   font-size: 16px;
   line-height: 1.625;
@@ -1632,7 +1658,8 @@ h3,
 h4,
 h5,
 h6 {
-  @include font($font-heading);
+  font-family: "Albertus", serif;
+  font-weight: 400;	
   line-height: 1.25;
   color: $heading-color;
 
